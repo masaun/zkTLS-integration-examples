@@ -1,5 +1,5 @@
 [package]
-name = "my_noir"
+name = "zktls_integrations"
 type = "bin"
 authors = ["masaun"]
 compiler_version = ">=1.0.0"

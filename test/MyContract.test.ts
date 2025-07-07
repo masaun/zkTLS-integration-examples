@@ -8,7 +8,7 @@ it("proves and verifies on-chain", async () => {
   await contract.waitForDeployment();
 
   // Generate a proof
-  const { noir, backend } = await hre.noir.getCircuit("my_noir");
+  const { noir, backend } = await hre.noir.getCircuit("zktls-integrations");
   const input = { x: 1, y: 2 };
   const { witness } = await noir.execute(input);
   const { proof, publicInputs } = await backend.generateProof(witness, {
