@@ -1,6 +1,4 @@
-fn main(x: Field, y: pub Field) {
-    assert(x != y);
-}
+use crate::main;
 
 #[test]
 fn test_main() {
