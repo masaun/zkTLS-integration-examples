@@ -8,7 +8,7 @@ it("proves and verifies on-chain", async () => {
   await contract.waitForDeployment();
 
   // Generate a proof
-  const { noir, backend } = await hre.noir.getCircuit("zktls-integrations");
+  const { noir, backend } = await hre.noir.getCircuit("zktls_integrations"); // @dev - "zktls_integrations" is defined in the Nargo.toml ("name")
   const input = { x: 1, y: 2 };
   const { witness } = await noir.execute(input);
   const { proof, publicInputs } = await backend.generateProof(witness, {
