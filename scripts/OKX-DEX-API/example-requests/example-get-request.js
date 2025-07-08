@@ -1,12 +1,13 @@
 const https = require('https');
 const crypto = require('crypto');
 const querystring = require('querystring');
+const dotenv = require('dotenv');
 
 // Define API credentials
 const api_config = {
-  "api_key": '',
-  "secret_key": '',
-  "passphrase": '',
+  "api_key": process.env.API_KEY,
+  "secret_key": process.env.SECRET_KEY,
+  "passphrase": process.env.PASS_PHRASE,
 };
 
 function preHash(timestamp, method, request_path, params) {
@@ -70,44 +71,10 @@ function sendGetRequest(request_path, params) {
   req.end();
 }
 
-function sendPostRequest(request_path, params) {
-  // Generate a signature
-  const { signature, timestamp } = createSignature("POST", request_path, params);
 
-  // Generate the request header
-  const headers = {
-    'OK-ACCESS-KEY': api_config['api_key'],
-    'OK-ACCESS-SIGN': signature,
-    'OK-ACCESS-TIMESTAMP': timestamp,
-    'OK-ACCESS-PASSPHRASE': api_config['passphrase'],
-    'Content-Type': 'application/json' 
-  };
-
-  const options = {
-    hostname: 'web3.okx.com',
-    path: request_path,
-    method: 'POST',
-    headers: headers
-  };
-
-  const req = https.request(options, (res) => {
-    let data = '';
-    res.on('data', (chunk) => {
-      data += chunk;
-    });
-    res.on('end', () => {
-      console.log(data);
-    });
-  });
-
-  if (params) {
-    req.write(JSON.stringify(params));
-  }
-
-  req.end();
-}
-
-// GET request example
+/**
+ * @notice - Execute a GET request to the OKX DEX API
+ */
 const getRequestPath = '/api/v5/dex/aggregator/quote';
 const getParams = {
   'chainId': 42161,
@@ -117,10 +84,3 @@ const getParams = {
 };
 sendGetRequest(getRequestPath, getParams);
 
-// POST request example
-const postRequestPath = '/api/v5/dex/index/current-price';
-const postParams = [{
-  chainIndex: "1",
-  tokenContractAddress: "0xc18360217d8f7ab5e7c516566761ea12ce7f9d72"
-}];
-sendPostRequest(postRequestPath, postParams); 

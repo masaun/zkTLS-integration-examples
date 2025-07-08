@@ -1,0 +1,10 @@
+{
+  "name": "OKX-DEX-API-request-script",
+  "version": "0.0.1",
+  "scripts": {
+    "compile": "node ./OKX-DEX-API/example-requests/example-get-request.js"
+  },
+  "devDependencies": {
+    "dotenv": "17.1.0"
+  }
+}
