@@ -6,7 +6,7 @@ use noir_web_prover::{
 use poseidon::poseidon::bn254::{hash_1, hash_2};
 
 
-fn verify_http(
+fn verify_http_data(
     response_plaintext_bytes: [u8; 320],
     line_digests: [Field; 10],
     polynomial_input: Field
