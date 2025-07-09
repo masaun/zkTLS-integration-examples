@@ -31,6 +31,7 @@ async function makeRequest() {
   const timestamp = new Date().toISOString();
 
   const signature = generateSignature(timestamp, method, requestPath, body, secretKey);
+  console.log(`signature: ${ signature }`); // @dev - [Log]: Successfully generated signature
 
   const headers: Record<string, string> = {
     'OK-ACCESS-KEY': apiKey,
@@ -39,12 +40,14 @@ async function makeRequest() {
     'OK-ACCESS-PASSPHRASE': passphrase,
     'Content-Type': 'application/json',
   };
+  console.log(`headers: ${ JSON.stringify(headers, null, 2) }`); // @dev - [Log]: Successfully generated headers
 
   const config: AxiosRequestConfig = {
     method,
     url: `${baseUrl}${requestPath}`,
     headers,
   };
+  console.log(`config: ${ JSON.stringify(config, null, 2) }`); // @dev - [Log]: 
 
   try {
     const response = await axios(config);
