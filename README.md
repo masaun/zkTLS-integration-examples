@@ -1,5 +1,13 @@
 # zkTLS Integration Examples
 
+## Run (in `TS`) with `OKX DEX SDK`
+- GET a API request header
+```bash
+sh ./scripts/OKX-DEX-API/okx-dex-sdk-integrations/runningScript_okx-dex-sdk-api-request-sample.sh
+```
+
+<br>
+
 ## Run (in `TS`)
 - GET
 ```bash
