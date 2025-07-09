@@ -1,13 +1,15 @@
 const https = require('https');
 const crypto = require('crypto');
 const querystring = require('querystring');
+
 const dotenv = require('dotenv');
+dotenv.config();
 
 // Define API credentials
 const api_config = {
   "api_key": process.env.API_KEY,
   "secret_key": process.env.SECRET_KEY,
-  "passphrase": process.env.PASS_PHRASE,
+  "passphrase": process.env.PASS_PHRASE
 };
 
 function preHash(timestamp, method, request_path, params) {

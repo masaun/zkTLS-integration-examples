@@ -2,6 +2,9 @@ const https = require('https');
 const crypto = require('crypto');
 const querystring = require('querystring');
 
+const dotenv = require('dotenv');
+dotenv.config();
+
 // Define API credentials
 const api_config = {
   "api_key": process.env.API_KEY,
