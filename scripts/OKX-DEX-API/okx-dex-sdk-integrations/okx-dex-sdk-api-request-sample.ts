@@ -15,23 +15,36 @@ import CryptoJS from 'crypto-js';
 // Load hidden environment variables
 dotenv.config();
 
-// Your wallet information - REPLACE WITH YOUR OWN VALUES
-//const WALLET_ADDRESS: string = process.env.EVM_WALLET_ADDRESS || '0xYourWalletAddress';
-//const PRIVATE_KEY: string = process.env.EVM_PRIVATE_KEY || 'YourPrivateKey'; 
+/**
+ * @notice - Get data for OKX DEX API request
+ */
+function getData() {
+    // Your wallet information - REPLACE WITH YOUR OWN VALUES
+    //const WALLET_ADDRESS: string = process.env.EVM_WALLET_ADDRESS || '0xYourWalletAddress';
+    //const PRIVATE_KEY: string = process.env.EVM_PRIVATE_KEY || 'YourPrivateKey'; 
 
-// Token addresses for swap on Base Chain
-const ETH_ADDRESS: string = '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE'; // Native ETH
-const USDC_ADDRESS: string = '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913'; // USDC on Base
+    // Token addresses for swap on Base Chain
+    const ETH_ADDRESS: string = '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE'; // Native ETH
+    const USDC_ADDRESS: string = '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913'; // USDC on Base
 
-// Chain ID for Base Chain
-const chainId: string = '8453';
+    // Chain ID for Base Chain
+    const chainId: string = '8453';
 
-// API URL
-const baseUrl: string = 'https://web3.okx.com/api/v5/';
+    // API URL
+    const baseUrl: string = 'https://web3.okx.com/api/v5/';
 
-// Amount to swap in smallest unit (0.0005 ETH)
-const SWAP_AMOUNT: string = '500000000000000'; // 0.0005 ETH
-const SLIPPAGE: string = '0.005'; // 0.5% slippage tolerance
+    // Amount to swap in smallest unit (0.0005 ETH)
+    const SWAP_AMOUNT: string = '500000000000000'; // 0.0005 ETH
+    const SLIPPAGE: string = '0.005'; // 0.5% slippage tolerance
+
+    const timestamp = new Date().toISOString();
+    const method = 'GET';
+    const requestPath = '/api/v5/account/balance';
+
+    return { ETH_ADDRESS, USDC_ADDRESS, chainId, baseUrl, SWAP_AMOUNT, SLIPPAGE, timestamp, method, requestPath };
+}
+
+
 
 // --------------------- util function ---------------------
 
@@ -81,6 +94,8 @@ async function getSwapQuote(
   amount: string,
   slippage: string = '0.005'
 ): Promise<any> {
+  const { chainId, baseUrl } = getData();
+
   try {
     const path = 'dex/aggregator/quote';
     const url = `${baseUrl}${path}`;
@@ -116,13 +131,13 @@ async function getSwapQuote(
  * @notice - Run this script to test the API request
  */
 async function main() {
-    const timestamp = new Date().toISOString();
-    const method = 'GET';
-    const requestPath = '/api/v5/account/balance';
+    // Get a header information
+    const { timestamp, method, requestPath } = getData();
     const headers = getHeaders(timestamp, method, requestPath);
     console.log(`headers: ${JSON.stringify(headers, null, 2)}`); // @dev - [Log]: Successfully generated headers
 
-    // Get swap quote
+    // Get a swap quote
+    const { ETH_ADDRESS, USDC_ADDRESS, SWAP_AMOUNT, SLIPPAGE } = getData();
     const quote = await getSwapQuote(ETH_ADDRESS, USDC_ADDRESS, SWAP_AMOUNT, SLIPPAGE);
     console.log(`Swap Quote: ${JSON.stringify(quote, null, 2)}`); // @dev - [Log]: Successfully fetched swap quote
 }
