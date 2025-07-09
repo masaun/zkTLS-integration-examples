@@ -3,13 +3,19 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import crypto from 'crypto';
 
-import dotenv from 'dotenv';
-dotenv.config(); // <-- Load .env variables
+import * as dotenv from 'dotenv';
+dotenv.config();
 
-const apiKey = process.env.API_KEY;
-const secretKey = process.env.SECRET_KEY;
-const passphrase = process.env.PASS_PHRASE;
+const apiKey = process.env.API_KEY || '';
+const secretKey = process.env.SECRET_KEY || '';
+const passphrase = process.env.PASS_PHRASE || '';
 const baseUrl = 'https://www.okx.com';
+
+// @dev - Successfully loaded environment variables
+console.log(`API_KEY: ${ process.env.API_KEY }`);
+console.log(`SECRET_KEY: ${ process.env.SECRET_KEY }`);
+console.log(`PASS_PHRASE: ${ process.env.PASS_PHRASE }`);
+
 
 // Function to generate signature
 function generateSignature(timestamp: string, method: string, requestPath: string, body: string, secretKey: string): string {
