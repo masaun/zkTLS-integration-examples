@@ -1,3 +1,21 @@
+# zkTLS Integration Examples
+
+## Run the script for DEX API
+
+- GET
+```bash
+sh ./scripts/OKX-DEX-API/example-requests/example-get-request.js
+```
+
+- POST
+```bash
+sh ./scripts/OKX-DEX-API/example-requests/example-post-request.js
+```
+
+<br>
+
+<hr>
+
 <img align="right" width="150" height="150" top="100" src="https://raw.githubusercontent.com/olehmisar/hardhat-noir/main/assets/banner.jpg" >
 
 # Hardhat Noir Starter
