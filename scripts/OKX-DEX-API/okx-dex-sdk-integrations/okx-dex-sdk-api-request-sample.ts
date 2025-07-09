@@ -62,9 +62,15 @@ export function getHeaders(timestamp: string, method: string, requestPath: strin
 /**
  * @notice - Run this script to test the API request
  */
-const timestamp = new Date().toISOString();
-const method = 'GET';
-const requestPath = '/api/v5/account/balance';
-const headers = getHeaders(timestamp, method, requestPath);
-console.log(`headers: ${JSON.stringify(headers, null, 2)}`); // @dev - [Log]: Successfully generated headers
+async function main() {
+    const timestamp = new Date().toISOString();
+    const method = 'GET';
+    const requestPath = '/api/v5/account/balance';
+    const headers = getHeaders(timestamp, method, requestPath);
+    console.log(`headers: ${JSON.stringify(headers, null, 2)}`); // @dev - [Log]: Successfully generated headers
+}
 
+main().catch((error) => {
+    console.error('Error:', error);
+    process.exit(1);
+});
