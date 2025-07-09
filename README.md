@@ -1,3 +1,37 @@
+# zkTLS Integration Examples
+
+## Run (in `TS`) with `OKX DEX SDK`
+- GET a API request header
+```bash
+sh ./scripts/OKX-DEX-API/okx-dex-sdk-integrations/runningScript_okx-dex-sdk-api-request-sample.sh
+```
+
+<br>
+
+## Run (in `TS`)
+- GET
+```bash
+sh ./scripts/OKX-DEX-API/example-requests-in-ts/runningScript_example-get-request.sh
+```
+
+<br>
+
+## Run the script for DEX API (in `JS`)
+
+- GET
+```bash
+sh ./scripts/OKX-DEX-API/example-requests-in-js/runningScript_example-get-request.sh
+```
+
+- POST
+```bash
+sh ./scripts/OKX-DEX-API/example-requests-in-js/runningScript_example-post-request.sh
+```
+
+<br>
+
+<hr>
+
 <img align="right" width="150" height="150" top="100" src="https://raw.githubusercontent.com/olehmisar/hardhat-noir/main/assets/banner.jpg" >
 
 # Hardhat Noir Starter

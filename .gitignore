@@ -1,4 +1,5 @@
 node_modules
+package-lock.json
 .env
 
 # Hardhat files
@@ -17,3 +18,4 @@ node_modules
 ignition/deployments/chain-31337
 
 .DS_Store
+
