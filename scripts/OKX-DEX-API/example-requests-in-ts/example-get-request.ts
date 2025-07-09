@@ -3,9 +3,12 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import crypto from 'crypto';
 
-const apiKey = 'your_api_key';
-const secretKey = 'your_secret_key';
-const passphrase = 'your_passphrase';
+import dotenv from 'dotenv';
+dotenv.config(); // <-- Load .env variables
+
+const apiKey = process.env.API_KEY;
+const secretKey = process.env.SECRET_KEY;
+const passphrase = process.env.PASS_PHRASE;
 const baseUrl = 'https://www.okx.com';
 
 // Function to generate signature

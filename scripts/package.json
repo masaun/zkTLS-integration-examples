@@ -5,6 +5,7 @@
     "compile": "node ./OKX-DEX-API/example-requests/example-get-request.js"
   },
   "devDependencies": {
+    "@types/node": "^24.0.12",
     "dotenv": "17.1.0"
   }
 }
