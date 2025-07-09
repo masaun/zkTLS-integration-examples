@@ -1,15 +1,23 @@
 # zkTLS Integration Examples
 
-## Run the script for DEX API
+## Run (in `TS`)
+- GET
+```bash
+sh ./scripts/OKX-DEX-API/example-requests-in-ts/runningScript_example-get-request.sh
+```
+
+<br>
+
+## Run the script for DEX API (in `JS`)
 
 - GET
 ```bash
-sh ./scripts/OKX-DEX-API/example-requests/example-get-request.js
+sh ./scripts/OKX-DEX-API/example-requests-in-js/runningScript_example-get-request.sh
 ```
 
 - POST
 ```bash
-sh ./scripts/OKX-DEX-API/example-requests/example-post-request.js
+sh ./scripts/OKX-DEX-API/example-requests-in-js/runningScript_example-post-request.sh
 ```
 
 <br>
