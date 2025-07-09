@@ -1,9 +1,17 @@
 # zkTLS Integration Examples
 
 ## Run (in `TS`) with `OKX DEX SDK`
+
+- Create an `.env` by copying the `.env.example`
+```bash
+cd scripts/OKX-DEX-API
+cp .env.example .env
+```
+
 - GET a API request header
 ```bash
-sh ./scripts/OKX-DEX-API/okx-dex-sdk-integrations/runningScript_okx-dex-sdk-api-request-sample.sh
+cd scripts/OKX-DEX-API
+sh okx-dex-sdk-integrations/runningScript_okx-dex-sdk-api-request-sample.sh
 ```
 
 <br>
