@@ -34,6 +34,15 @@ const SWAP_AMOUNT: string = '500000000000000'; // 0.0005 ETH
 const SLIPPAGE: string = '0.005'; // 0.5% slippage tolerance
 
 // --------------------- util function ---------------------
+
+/**
+ * @notice - Generate headers for OKX DEX API authentication
+ * @param timestamp 
+ * @param method 
+ * @param requestPath 
+ * @param queryString 
+ * @returns 
+ */
 export function getHeaders(timestamp: string, method: string, requestPath: string, queryString = "") {
 // Check https://web3.okx.com/zh-hans/web3/build/docs/waas/rest-authentication for api-key
     const apiKey = process.env.OKX_API_KEY;
@@ -58,6 +67,50 @@ export function getHeaders(timestamp: string, method: string, requestPath: strin
     };
 };
 
+/**
+ * Get swap quote from DEX API
+ * @param fromTokenAddress - Source token address
+ * @param toTokenAddress - Destination token address
+ * @param amount - Amount to swap
+ * @param slippage - Maximum slippage (e.g., "0.005" for 0.5%)
+ * @returns Swap quote
+ */
+async function getSwapQuote(
+  fromTokenAddress: string,
+  toTokenAddress: string,
+  amount: string,
+  slippage: string = '0.005'
+): Promise<any> {
+  try {
+    const path = 'dex/aggregator/quote';
+    const url = `${baseUrl}${path}`;
+
+    const params = {
+      chainId: chainId,
+      fromTokenAddress,
+      toTokenAddress,
+      amount,
+      slippage
+    };
+
+    // Prepare authentication
+    const timestamp = new Date().toISOString();
+    const requestPath = `/api/v5/${path}`;
+    const queryString = "?" + new URLSearchParams(params).toString();
+    const headers = getHeaders(timestamp, 'GET', requestPath, queryString);
+
+    const response = await axios.get(url, { params, headers });
+
+    if (response.data.code === '0') {
+      return response.data.data[0];
+    } else {
+      throw new Error(`API Error: ${response.data.msg || 'Unknown error'}`);
+    }
+  } catch (error) {
+    console.error('Failed to get swap quote:', (error as Error).message);
+    throw error;
+  }
+}
 
 /**
  * @notice - Run this script to test the API request
@@ -68,6 +121,10 @@ async function main() {
     const requestPath = '/api/v5/account/balance';
     const headers = getHeaders(timestamp, method, requestPath);
     console.log(`headers: ${JSON.stringify(headers, null, 2)}`); // @dev - [Log]: Successfully generated headers
+
+    // Get swap quote
+    const quote = await getSwapQuote(ETH_ADDRESS, USDC_ADDRESS, SWAP_AMOUNT, SLIPPAGE);
+    console.log(`Swap Quote: ${JSON.stringify(quote, null, 2)}`); // @dev - [Log]: Successfully fetched swap quote
 }
 
 main().catch((error) => {
