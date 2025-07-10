@@ -1,4 +1,4 @@
-mod crate::zktls::test_http_data_okx_dex_api;
+use crate::zktls::test_http_data_okx_dex_api;
 
 #[test]
 fn generate_test_http_data_for_DEX_API_response_header_and_body() {
