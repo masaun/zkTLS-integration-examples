@@ -24,17 +24,17 @@ fn generate_test_http_data_for_DEX_API_response_header_and_body() {
     println(f"Header 2 (in Field type): {header_2_in_field}\n");
     println(f"Header 3 (in Field type): {header_3_in_field}\n");
 
-    let response_plain_text = response_plain_test();
-    let response_bytes = response_plain_text.as_bytes().map(|x| x);
-    println(f"Response (in bytes): {response_bytes}\n");  // @dev - [Result]: Successful to convert the response from string to bytes ([u8; N])
+    let response_body_plain_text = response_body_plain_test();
+    let response_body_bytes = response_body_plain_text.as_bytes().map(|x: u8| x);
+    println(f"Response Body (in bytes): {response_body_bytes}\n");  // @dev - [Result]: Successful to convert the response from string to bytes ([u8; N])
 }
 
 
 /**
- * @notice - Example response of the DEX API in a plain text format.
+ * @notice - Example response body of the DEX API in a plain text format.
  */
-fn response_plain_test() -> str<3073> {
-    let response_plain_test = "{
+fn response_body_plain_test() -> str<3073> {
+    let response_body_plain_test = "{
         \"chainId\": \"8453\",
         \"chainIndex\": \"8453\",
         \"contextSlot\": 0,
@@ -121,5 +121,5 @@ fn response_plain_test() -> str<3073> {
     }";
 
     // @dev - Returning the response as a string
-    response_plain_test
+    response_body_plain_test
 }
