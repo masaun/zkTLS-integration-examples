@@ -114,10 +114,12 @@ async function getSwapQuote(
     const queryString = "?" + new URLSearchParams(params).toString();
     const headers = getHeaders(timestamp, 'GET', requestPath, queryString);
 
+    // @dev - Full API response
     const response = await axios.get(url, { params, headers });
+    console.log(`Full API Response (response.data): ${JSON.stringify(response.data, null, 2)} \n`); // @dev - [Log]: Successfully fetched swap quote
 
     if (response.data.code === '0') {
-      return response.data.data[0];
+      return response.data.data[0];    // @dev - Return value.
     } else {
       throw new Error(`API Error: ${response.data.msg || 'Unknown error'}`);
     }
