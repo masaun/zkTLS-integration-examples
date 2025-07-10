@@ -93,7 +93,7 @@ async function getSwapQuote(
   toTokenAddress: string,
   amount: string,
   slippage: string = '0.005'
-): Promise<any> {
+): Promise<{apiResponseHeader: any, apiResponseBody: any, quote: any}> {
   const { chainId, baseUrl } = getData();
 
   try {
@@ -114,10 +114,15 @@ async function getSwapQuote(
     const queryString = "?" + new URLSearchParams(params).toString();
     const headers = getHeaders(timestamp, 'GET', requestPath, queryString);
 
+    // @dev - Full API response
     const response = await axios.get(url, { params, headers });
+    const apiResponseHeader = response.headers;
+    const apiResponseBody = response.data.data[0];
+    console.log(`Full API Response Headers: ${JSON.stringify(response.headers, null, 2)} \n`); // @dev - [Log]: Successfully fetched swap quote
+    console.log(`Full API Response (response.data): ${JSON.stringify(response.data, null, 2)} \n`); // @dev - [Log]: Successfully fetched swap quote
 
     if (response.data.code === '0') {
-      return response.data.data[0];
+      return { apiResponseHeader, apiResponseBody, quote: response.data.data[0]};    // @dev - Return value.
     } else {
       throw new Error(`API Error: ${response.data.msg || 'Unknown error'}`);
     }
@@ -134,11 +139,13 @@ async function main() {
     // Get a header information
     const { timestamp, method, requestPath } = getData();
     const headers = getHeaders(timestamp, method, requestPath);
-    console.log(`headers: ${JSON.stringify(headers, null, 2)}`); // @dev - [Log]: Successfully generated headers
+    console.log(`headers: ${JSON.stringify(headers, null, 2)} \n`); // @dev - [Log]: Successfully generated headers
 
     // Get a swap quote
     const { ETH_ADDRESS, USDC_ADDRESS, SWAP_AMOUNT, SLIPPAGE } = getData();
-    const quote = await getSwapQuote(ETH_ADDRESS, USDC_ADDRESS, SWAP_AMOUNT, SLIPPAGE);
+    const { apiResponseHeader, apiResponseBody, quote } = await getSwapQuote(ETH_ADDRESS, USDC_ADDRESS, SWAP_AMOUNT, SLIPPAGE);
+    console.log(`API Response Header: ${JSON.stringify(apiResponseHeader, null, 2)} \n`); // @dev - [Log]: Successfully fetched swap quote
+    console.log(`API Response Body: ${JSON.stringify(apiResponseBody, null, 2)} \n`); // @dev - [Log]: Successfully fetched swap quote
     console.log(`Swap Quote: ${JSON.stringify(quote, null, 2)}`); // @dev - [Log]: Successfully fetched swap quote
 }
 
