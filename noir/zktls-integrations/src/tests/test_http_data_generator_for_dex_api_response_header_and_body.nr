@@ -24,8 +24,9 @@ fn generate_test_http_data_for_DEX_API_response_header_and_body() {
     println(f"Header 2 (in Field type): {header_2_in_field}\n");
     println(f"Header 3 (in Field type): {header_3_in_field}\n");
 
-    let response = response_plain_test();
-    println(f"Response: {response}\n");
+    let response_plain_text = response_plain_test();
+    let response_bytes = response_plain_text.as_bytes().map(|x| x);
+    println(f"Response (in bytes): {response_bytes}\n");  // @dev - [Result]: Successful to convert the response from string to bytes ([u8; N])
 }
 
 
