@@ -1,4 +1,14 @@
-# zkTLS Integration Examples
+# 【IN PROGRESS】zkTLS Integration Examples
+
+## Overview
+
+- This repo is the `zkTLS` integration examples using the `Noir Web Prover` circuit:   
+  https://github.com/pluto/noir-web-prover-circuits
+
+
+- I'm going to experiment to create `zkTLS` proofs for various Web2 APIs in this repo.
+
+<br>
 
 ## Run (in `TS`) with `OKX DEX SDK`
 

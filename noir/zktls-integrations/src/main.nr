@@ -6,7 +6,7 @@ use zktls::noir_web_prover_integrator::{verify_http_data};
 fn main(
     // @dev - Noir Web Prover
     response_plaintext_bytes: [u8; 320],
-    line_digests: [Field; 10],
+    line_digests: [Field; 10], // @dev - Aligned to the "NUM_HEADERS" -> At this point, we assume 5 headers: [start_line, header_0, ..., header_4]
     polynomial_input: Field
     //x: Field, 
     //y: pub Field,
