@@ -2,7 +2,12 @@
  * @notice - HTTP data of OKX DEX API (https://web3.okx.com/build/dev-docs/dex-api/) for testing purpose.
  */
 
-use crate::tests::test_http_data_generator_for_dex_api_response_header_and_body::{response_body_plain_test};
+use crate::tests::{
+    test_http_data_generator_for_dex_api_response_header_and_body::{
+        response_header_plain_test,
+        response_body_plain_test
+    }
+};
 
 // HTTP/1.1 200 OK
 // content-type: application/json; charset=utf-8
@@ -13,31 +18,87 @@ pub fn response() -> [u8; 1] {
     [1] // [TODO]: Replace with actual response data
 }
 
-//   72, 84, 84, 80, 47, 49, 46, 49, 32, 50, 48, 48, 32, 79, 75,
-pub fn start_line() -> [Field; 15] {
-    "HTTP/1.1 200 OK".as_bytes().map(|x| x as Field)
+
+
+
+// {
+//     \"date\": \"Thu, 10 Jul 2025 03:34:36 GMT\",
+//     \"content-type\": \"application/json;charset=UTF-8\",
+//     \"transfer-encoding\": \"chunked\",
+//     \"connection\": \"keep-alive\",
+//     \"vary\": \"Accept-Encoding\",
+//     \"set-cookie\": [
+//         \"locale=en-US; Max-Age=604800; Expires=Thu, 17-Jul-2025 03:34:36 GMT; Path=/\",
+//         \"__cf_bm=nOLEpRAqS08Ck_p20ZOR_om74A_U6NdMzeXyPjuRDCY-1752118476-1.0.1.1-9GL3gnxhdlVxAsHLxGpZH9B3hJilGJOCwnX9gy_ct0BVvEggqwlwbRhTIpQWjL5tHp4JmnT6WdHuKEPrnCK7OeosGDWCH5TtEbG6h8i1rPU; path=/; expires=Thu, 10-Jul-25 04:04:36 GMT; domain=.okx.com; HttpOnly; Secure; SameSite=None\"
+//     ],
+//     \"b-locale\": \"en_US\",
+//     \"content-security-policy\": \"frame-ancestors 'self'\",
+//     \"access-control-allow-origin\": \"*\",
+//     \"x-brokerid\": \"0\",
+//     \"strict-transport-security\": \"max-age=31536000; includeSubDomains\",
+//     \"x-xss-protection\": \"1; mode=block\",
+//     \"x-frame-options\": \"DENY\",
+//     \"x-content-type-options\": \"nosniff\",
+//     \"cf-cache-status\": \"DYNAMIC\",
+//     \"server\": \"cloudflare\",
+//     \"cf-ray\": \"95cd019c3ad57822-NRT\"
+// }
+pub fn header() -> [u8; 1112] {
+    let response_header_plain_text = response_header_plain_test();
+    let response_header_bytes = response_header_plain_text.as_bytes().map(|x: u8| x);
+    println(f"Response Header (in bytes): {response_header_bytes}\n");  // @dev - [Result]: Successful to convert the API response header from string to bytes ([u8; N])
+
+    // @dev - Returning the API response header in bytes
+    response_header_bytes
 }
 
+// @dev - [Log]: API response header in bytes format (response_header_bytes) above:
+//
 // [
-//   99, 111, 110, 116, 101, 110, 116, 45, 116, 121, 112, 101, 58, 32, 97, 112,
-//   112, 108, 105, 99, 97, 116, 105, 111, 110, 47, 106, 115, 111, 110, 59, 32, 99,
-//   104, 97, 114, 115, 101, 116, 61, 117, 116, 102, 45, 56,
+//   123, 10, 32, 32, 32, 32, 32, 32, 32, 32, 34, 100, 97, 116, 101, 34, 58, 32, 34, 
+//   ...
+//   99, 51, 97, 100, 53, 55, 56, 50, 50, 45, 78, 82, 84, 34, 10, 32, 32, 32, 32, 125
 // ];
-pub fn header_0() -> [Field; 45] {
-    "content-type: application/json; charset=utf-8".as_bytes().map(|x| x as Field)
+
+
+
+
+// [34, 100, 97, 116, 101, 34, 58, 32, 34, 84, 104, 117, 44, 32, 49, 48, 32, 74, 117, 108, 32, 50, 48, 50, 53, 32, 48, 51, 58, 51, 52, 58, 51, 54, 32, 71, 77, 84, 34]
+pub fn start_line() -> [Field; 39] {
+    let start_line_in_field = "\"date\": \"Thu, 10 Jul 2025 03:34:36 GMT\"".as_bytes().map(|x| x as Field);
+    println(f"start_line (in Field): {start_line_in_field}\n");
+    start_line_in_field
 }
 
-// [
-//   99, 111, 110, 116, 101, 110, 116, 45, 101, 110, 99, 111, 100, 105, 110, 103,
-//   58, 32, 103, 122, 105, 112,
-// ];
-pub fn header_1() -> [Field; 22] {
-    "content-encoding: gzip".as_bytes().map(|x| x as Field)
+// [34, 99, 111, 110, 116, 101, 110, 116, 45, 116, 121, 112, 101, 34, 58, 32, 34, 97, 112, 112, 108, 105, 99, 97, 116, 105, 111, 110, 47, 106, 115, 111, 110, 59, 99, 104, 97, 114, 115, 101, 116, 61, 85, 84, 70, 45, 56, 34]
+pub fn header_0() -> [Field; 48] {
+    let header_0_in_field = "\"content-type\": \"application/json;charset=UTF-8\"".as_bytes().map(|x| x as Field);
+    println(f"header_0 (in Field): {header_0_in_field}\n");
+    header_0_in_field
 }
 
+// [34, 99, 111, 110, 116, 101, 110, 116, 45, 116, 121, 112, 101, 34, 58, 32, 34, 97, 112, 112, 108, 105, 99, 97, 116, 105, 111, 110, 47, 106, 115, 111, 110, 59, 99, 104, 97, 114, 115, 101, 116, 61, 85, 84, 70, 45, 56, 34]
+pub fn header_1() -> [Field; 30] {
+    let header_1_in_field = "\"transfer-encoding\": \"chunked\"".as_bytes().map(|x| x as Field);
+    println(f"header_1 (in Field): {header_1_in_field}\n");
+    header_1_in_field
+}
+
+// [34, 116, 114, 97, 110, 115, 102, 101, 114, 45, 101, 110, 99, 111, 100, 105, 110, 103, 34, 58, 32, 34, 99, 104, 117, 110, 107, 101, 100, 34]
 pub fn header_2() -> [Field; 26] {
-    "Transfer-Encoding: chunked".as_bytes().map(|x| x as Field)
+    let header_2_in_field = "\"connection\": \"keep-alive\"".as_bytes().map(|x| x as Field);
+    println(f"header_2 (in Field): {header_2_in_field}\n");
+    header_2_in_field
 }
+
+// [83, 101, 114, 118, 101, 114, 58, 32, 87, 111, 114, 107, 100, 97, 121]
+pub fn header_3() -> [Field; 25] {
+    let header_3_in_field = "\"vary\": \"Accept-Encoding\"".as_bytes().map(|x| x as Field);
+    println(f"header_3 (in Field): {header_3_in_field}\n");
+    header_3_in_field
+}
+
+
 
 // {
 //     \"chainId\": \"8453\",
