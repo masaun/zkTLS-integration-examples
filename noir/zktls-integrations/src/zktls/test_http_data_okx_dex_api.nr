@@ -78,22 +78,22 @@ pub fn header_0() -> [Field; 48] {
 }
 
 // [34, 99, 111, 110, 116, 101, 110, 116, 45, 116, 121, 112, 101, 34, 58, 32, 34, 97, 112, 112, 108, 105, 99, 97, 116, 105, 111, 110, 47, 106, 115, 111, 110, 59, 99, 104, 97, 114, 115, 101, 116, 61, 85, 84, 70, 45, 56, 34]
-pub fn header_1() -> [Field; 48] {
-    let header_1_in_field = "\"content-type\": \"application/json;charset=UTF-8\"".as_bytes().map(|x| x as Field);
+pub fn header_1() -> [Field; 30] {
+    let header_1_in_field = "\"transfer-encoding\": \"chunked\"".as_bytes().map(|x| x as Field);
     println(f"header_1 (in Field): {header_1_in_field}\n");
     header_1_in_field
 }
 
 // [34, 116, 114, 97, 110, 115, 102, 101, 114, 45, 101, 110, 99, 111, 100, 105, 110, 103, 34, 58, 32, 34, 99, 104, 117, 110, 107, 101, 100, 34]
-pub fn header_2() -> [Field; 30] {
-    let header_2_in_field = "\"transfer-encoding\": \"chunked\"".as_bytes().map(|x| x as Field);
+pub fn header_2() -> [Field; 26] {
+    let header_2_in_field = "\"connection\": \"keep-alive\"".as_bytes().map(|x| x as Field);
     println(f"header_2 (in Field): {header_2_in_field}\n");
     header_2_in_field
 }
 
 // [83, 101, 114, 118, 101, 114, 58, 32, 87, 111, 114, 107, 100, 97, 121]
-pub fn header_3() -> [Field; 26] {
-    let header_3_in_field = "\"connection\": \"keep-alive\"".as_bytes().map(|x| x as Field);
+pub fn header_3() -> [Field; 25] {
+    let header_3_in_field = "\"vary\": \"Accept-Encoding\"".as_bytes().map(|x| x as Field);
     println(f"header_3 (in Field): {header_3_in_field}\n");
     header_3_in_field
 }
