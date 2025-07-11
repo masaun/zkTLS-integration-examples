@@ -2,7 +2,12 @@
  * @notice - HTTP data of OKX DEX API (https://web3.okx.com/build/dev-docs/dex-api/) for testing purpose.
  */
 
-use crate::tests::test_http_data_generator_for_dex_api_response_header_and_body::{response_body_plain_test};
+use crate::tests::{
+    test_http_data_generator_for_dex_api_response_header_and_body::{
+        response_header_plain_test,
+        response_body_plain_test
+    }
+};
 
 // HTTP/1.1 200 OK
 // content-type: application/json; charset=utf-8
