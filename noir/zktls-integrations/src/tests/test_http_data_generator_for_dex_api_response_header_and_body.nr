@@ -40,7 +40,7 @@ fn generate_test_http_data_for_DEX_API_response_header_and_body() {
  * @notice - Example response body of the DEX API in a plain text format.
  */
 fn response_header_plain_test() -> str<1112> {
-    let response_body_plain_test = "{
+    let response_header_plain_test = "{
         \"date\": \"Thu, 10 Jul 2025 03:34:36 GMT\",
         \"content-type\": \"application/json;charset=UTF-8\",
         \"transfer-encoding\": \"chunked\",
@@ -64,7 +64,7 @@ fn response_header_plain_test() -> str<1112> {
     }";
     
     // @dev - Returning the API response header as a string
-    response_body_plain_test
+    response_header_plain_test
 }
 
 /**
