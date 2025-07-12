@@ -9,13 +9,23 @@ use crate::tests::{
     }
 };
 
-// HTTP/1.1 200 OK
-// content-type: application/json; charset=utf-8
-// content-encoding: gzip
-// Transfer-Encoding: chunked
 
-pub fn response() -> [u8; 1] {
-    [1] // [TODO]: Replace with actual response data
+
+/**
+ * @notice - API response (header + body) in bytes format.
+ */
+pub fn response() -> [u8; 4185] {
+    let response_header_plain_text = response_header_plain_test();
+    let response_header_bytes = response_header_plain_text.as_bytes().map(|x: u8| x);
+
+    let response_body_plain_text = response_body_plain_test();
+    let response_body_bytes = response_body_plain_text.as_bytes().map(|x: u8| x);
+
+    let response_bytes = response_header_bytes.concat(response_body_bytes);
+
+    println(f"Response (header + body in bytes): {response_bytes}\n");
+
+    response_bytes
 }
 
 
