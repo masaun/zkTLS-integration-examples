@@ -7,8 +7,6 @@ use noir_web_prover::{
 use poseidon::poseidon::bn254::{hash_1, hash_2};
 
 
-
-
 fn verify_http_data(
     response_plaintext_bytes: [u8; 4185],
     //response_plaintext_bytes: [u8; 320],
