@@ -33,6 +33,10 @@ fn generate_test_http_data_for_DEX_API_response_header_and_body() {
     let response_body_plain_text = response_body_plain_test();
     let response_body_bytes = response_body_plain_text.as_bytes().map(|x: u8| x);
     println(f"Response Body (in bytes): {response_body_bytes}\n");  // @dev - [Result]: Successful to convert the response from string to bytes ([u8; N])
+
+    // @dev - Concatenating the whole API response (header + body) in bytes
+    let response_bytes = response_header_bytes.concat(response_body_bytes);
+    println(f"Response (header + body in bytes): {response_bytes}\n");
 }
 
 
