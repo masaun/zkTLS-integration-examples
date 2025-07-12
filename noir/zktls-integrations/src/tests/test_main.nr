@@ -11,13 +11,14 @@ use crate::{
 #[test]
 fn test_main() {
     // @dev - Input parameters for zkTLS circuit
-    let response_plaintext_bytes: [u8; 4185] = test_http_data_okx_dex_api::response();
-    //let response_plaintext_bytes: [u8; 320] = test_http_data::response();
+    //let response_plaintext_bytes: [u8; 4185] = test_http_data_okx_dex_api::response();
+    let response_plaintext_bytes: [u8; 320] = test_http_data::response();
     let mut line_digests = [Field::default(); NUM_HEADERS];
     let polynomial_input: Field = polynomial_input(); // Polynomial input for zkTLS circuit
 
     // @dev - Fetch the test data of OKX DEX API
-    let response = test_http_data_okx_dex_api::response();
+    let response = test_http_data::response();
+    //let response = test_http_data_okx_dex_api::response();
     let start_line = test_http_data_okx_dex_api::start_line();
     let header_0 = test_http_data_okx_dex_api::header_0();
     let header_1 = test_http_data_okx_dex_api::header_1();
