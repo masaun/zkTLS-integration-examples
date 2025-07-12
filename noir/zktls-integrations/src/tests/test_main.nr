@@ -41,7 +41,7 @@ fn test_main() {
     line_digests[2] = header_1_digest;
     line_digests[3] = header_2_digest;
     line_digests[4] = header_3_digest;
-    line_digests[5] = body_digest;
+    //line_digests[5] = body_digest;    // @dev - [Experimentation]: Whether or not the circuit test can finish to run. 
 
     // @dev - Noir Web Prover
     main(
