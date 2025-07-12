@@ -24,6 +24,7 @@ fn test_main() {
     let header_2 = test_http_data_okx_dex_api::header_1();
     let header_3 = test_http_data_okx_dex_api::header_1();
     let body = test_http_data_okx_dex_api::body();
+    let body_in_field = test_http_data_okx_dex_api::body_in_field();
 
     // @dev - Create the polynominal digests of the test data of OKX DEX API
     let start_line_digest = polynomial_digest(start_line, polynomial_input, 1);
@@ -31,7 +32,8 @@ fn test_main() {
     let header_1_digest = polynomial_digest(header_1, polynomial_input, 1);
     let header_2_digest = polynomial_digest(header_2, polynomial_input, 1);
     let header_3_digest = polynomial_digest(header_3, polynomial_input, 1);
-    let body_digest = polynomial_digest(body, polynomial_input, 1);
+    //let body_digest = polynomial_digest(body, polynomial_input, 1);
+    let body_digest = polynomial_digest(body_in_field, polynomial_input, 1);
 
     // @dev - Set the line digests for the test data of OKX DEX API
     line_digests[0] = start_line_digest;
