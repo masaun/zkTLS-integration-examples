@@ -2,5 +2,9 @@
 #source ../../.env
 #. ./.env
 
-echo "Run the test of the MyContract.sol"
-npm run test
+echo "Compile the Smart Contracts (MyContract.sol)"
+npx hardhat compile
+
+echo "Run the test of the Smart Contracts (MyContract.sol)"
+npx hardhat test ./test/MyContract.test.ts
+#npx hardhat test ./test/MyContract.test.ts --network localhost
