@@ -48,6 +48,14 @@ sh ./scripts/OKX-DEX-API/example-requests-in-js/runningScript_example-post-reque
 
 <br>
 
+## Run the test of the Smart Contracts
+- Run the test of the Smart Contracts (`./test/MyContract.test.ts`)
+```bash
+sh ./test/runningTest_MyContract.sh
+```
+
+<br>
+
 <hr>
 
 <img align="right" width="150" height="150" top="100" src="https://raw.githubusercontent.com/olehmisar/hardhat-noir/main/assets/banner.jpg" >
