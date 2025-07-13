@@ -133,6 +133,7 @@ export async function getSwapQuote(
 
 /**
  * @notice - Run this script to test the API request
+ * @dev - This function can be called in the ./test directory and FE directory.
  */
 export async function main() {
     // Get a header information
@@ -148,6 +149,9 @@ export async function main() {
     console.log(`Swap Quote: ${JSON.stringify(quote, null, 2)}`); // @dev - [Log]: Successfully fetched swap quote
 }
 
+/**
+ * @notice - Run the main() function via CLI
+ */
 main().catch((error) => {
     console.error('Error:', error);
     process.exit(1);
