@@ -16,14 +16,14 @@ global MAX_BODY_LENGTH: u32 = 320;
  * @notice - main function to verify HTTP data
  */
 fn main(
-    response_bytes: BoundedVec<u8, MAX_RESPONSE_LENGTH>,
-    header_bytes: BoundedVec<u8, MAX_HEADER_LENGTH>,
-    start_line_bytes: BoundedVec<u8, MAX_HEADER_0_LENGTH>,
-    header_0_bytes: BoundedVec<u8, MAX_HEADER_0_LENGTH>,
-    header_1_bytes: BoundedVec<u8, MAX_HEADER_1_LENGTH>,
-    header_2_bytes: BoundedVec<u8, MAX_HEADER_2_LENGTH>,
-    header_3_bytes: BoundedVec<u8, MAX_HEADER_3_LENGTH>,
-    body_bytes: BoundedVec<u8, MAX_BODY_LENGTH>
+    response_vec: BoundedVec<u8, MAX_RESPONSE_LENGTH>,
+    header_vec: BoundedVec<u8, MAX_HEADER_LENGTH>,
+    start_line_vec: BoundedVec<u8, MAX_HEADER_0_LENGTH>,
+    header_0_vec: BoundedVec<u8, MAX_HEADER_0_LENGTH>,
+    header_1_vec: BoundedVec<u8, MAX_HEADER_1_LENGTH>,
+    header_2_vec: BoundedVec<u8, MAX_HEADER_2_LENGTH>,
+    header_3_vec: BoundedVec<u8, MAX_HEADER_3_LENGTH>,
+    body_vec: BoundedVec<u8, MAX_BODY_LENGTH>
 
     // @dev - Noir Web Prover
     //response_plaintext_bytes: [u8; 4185],
@@ -31,6 +31,16 @@ fn main(
     //line_digests: [Field; 10], // @dev - Aligned to the "NUM_HEADERS" -> At this point, we assume 5 headers: [start_line, header_0, ..., header_4]
     //polynomial_input: Field
 ) {
+    // @dev - Convert a BoundedVec value to a bytes (uint8Array) value
+    let response_bytes = response_vec.storage().map(|x| x);
+    let header_field = header_vec.storage().map(|x| x as Field);
+    let start_line_field = start_line_vec.storage().map(|x| x as Field);
+    let header_0_field = header_0_vec.storage().map(|x| x as Field);
+    let header_1_field = header_1_vec.storage().map(|x| x as Field);
+    let header_2_field = header_2_vec.storage().map(|x| x as Field);
+    let header_3_field = header_3_vec.storage().map(|x| x as Field);
+    let body_field = body_vec.storage().map(|x| x as Field);
+
     // @dev - Noir Web Prover
     verify_http_data(response_plaintext_bytes, line_digests, polynomial_input);
 }
