@@ -2,7 +2,6 @@
  * @notice - ref: https://web3.okx.com/build/dev-docs/dex-api/dex-use-swap-quick-start
  */
 
-
 // --------------------- npm package ---------------------
 //import { Web3 } from 'web3';
 import axios from 'axios';
@@ -18,7 +17,7 @@ dotenv.config();
 /**
  * @notice - Get data for OKX DEX API request
  */
-function getData() {
+export function getData() {
     // Your wallet information - REPLACE WITH YOUR OWN VALUES
     //const WALLET_ADDRESS: string = process.env.EVM_WALLET_ADDRESS || '0xYourWalletAddress';
     //const PRIVATE_KEY: string = process.env.EVM_PRIVATE_KEY || 'YourPrivateKey'; 
@@ -88,7 +87,7 @@ export function getHeaders(timestamp: string, method: string, requestPath: strin
  * @param slippage - Maximum slippage (e.g., "0.005" for 0.5%)
  * @returns Swap quote
  */
-async function getSwapQuote(
+export async function getSwapQuote(
   fromTokenAddress: string,
   toTokenAddress: string,
   amount: string,
@@ -135,7 +134,7 @@ async function getSwapQuote(
 /**
  * @notice - Run this script to test the API request
  */
-async function main() {
+export async function main() {
     // Get a header information
     const { timestamp, method, requestPath } = getData();
     const headers = getHeaders(timestamp, method, requestPath);

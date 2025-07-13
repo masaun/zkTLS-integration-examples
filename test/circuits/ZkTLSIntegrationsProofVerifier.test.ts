@@ -1,12 +1,19 @@
 import { expect } from "chai";
 import hre, { ethers } from "hardhat";
 
+import { main, getData } from "../../scripts/OKX-DEX-API/okx-dex-sdk-integrations/okx-dex-sdk-api-request-sample"; 
+
+
 it("proves and verifies on-chain", async () => {
-  // Deploy a verifier contract
+  // Deploy the ZkTLSIntegrationsProofVerifier contract, which the HonkVerifier contract is inherited.
   const contractFactory = await ethers.getContractFactory("ZkTLSIntegrationsProofVerifier");
   const contract = await contractFactory.deploy();
   await contract.waitForDeployment();
-  console.log("Deployed contract address of the MyContract.sol:", await contract.getAddress());
+  console.log("Deployed contract address of the ZkTLSIntegrationsProofVerifier.sol:", await contract.getAddress());
+
+  // @dev - Run the API request sample script to get a swap quote
+  await main();
+  //await getData();
 
   // Generate a proof
   const { noir, backend } = await hre.noir.getCircuit("zktls_integrations"); // @dev - "zktls_integrations" is defined in the Nargo.toml ("name")
