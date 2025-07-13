@@ -6,6 +6,7 @@ it("proves and verifies on-chain", async () => {
   const contractFactory = await ethers.getContractFactory("MyContract");
   const contract = await contractFactory.deploy();
   await contract.waitForDeployment();
+  console.log("Deployed contract address of the MyContract.sol:", await contract.getAddress());
 
   // Generate a proof
   const { noir, backend } = await hre.noir.getCircuit("zktls_integrations"); // @dev - "zktls_integrations" is defined in the Nargo.toml ("name")
