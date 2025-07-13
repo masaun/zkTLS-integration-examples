@@ -62,7 +62,7 @@ fn verify_http_data(
         0,
     ];
 
-    let setup = SetupState { data: response_plaintext_bytes, line_digests, polynomial_input };
+    let setup = SetupState { data: response_bytes, line_digests, polynomial_input };
 
     let step_out = setup.verify(step_in, machine_state);
 }
