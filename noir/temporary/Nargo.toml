@@ -1,0 +1,7 @@
+# This Nargo.toml file is originally located in the root directory of the ./noir directory.
+# However, for compiling the ZK circuits in the each directory, this file is moved to this directory (./noir/temporary) and not used temporary.
+
+[workspace]
+members = [
+  "zktls-integrations"
+]
