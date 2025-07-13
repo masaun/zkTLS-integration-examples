@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: SEE LICENSE IN LICENSE
 pragma solidity ^0.8.27;
 
-import { HonkVerifier } from "./circuits/honk-verifier/honk_vk.sol";
+import { HonkVerifier } from "./honk-verifier/honk_vk.sol";
 //import {HonkVerifier} from "../noir/target/zktls_integrations.sol";
 
-contract MyContract {
+contract zkTLSIntegrationsProofVerifier {
     HonkVerifier public verifier = new HonkVerifier();
 
     function verify(

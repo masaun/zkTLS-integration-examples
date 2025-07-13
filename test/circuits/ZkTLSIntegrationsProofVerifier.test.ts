@@ -3,7 +3,7 @@ import hre, { ethers } from "hardhat";
 
 it("proves and verifies on-chain", async () => {
   // Deploy a verifier contract
-  const contractFactory = await ethers.getContractFactory("MyContract");
+  const contractFactory = await ethers.getContractFactory("ZkTLSIntegrationsProofVerifier");
   const contract = await contractFactory.deploy();
   await contract.waitForDeployment();
   console.log("Deployed contract address of the MyContract.sol:", await contract.getAddress());
