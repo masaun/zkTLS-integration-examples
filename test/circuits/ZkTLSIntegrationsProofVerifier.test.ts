@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import hre, { ethers } from "hardhat";
 
-import { main } from "../../scripts/OKX-DEX-API/okx-dex-sdk-integrations/okx-dex-sdk-api-request-sample"; 
+import { main, getData } from "../../scripts/OKX-DEX-API/okx-dex-sdk-integrations/okx-dex-sdk-api-request-sample"; 
 
 
 it("proves and verifies on-chain", async () => {
@@ -13,6 +13,7 @@ it("proves and verifies on-chain", async () => {
 
   // @dev - Run the API request sample script to get a swap quote
   await main();
+  //await getData();
 
   // Generate a proof
   const { noir, backend } = await hre.noir.getCircuit("zktls_integrations"); // @dev - "zktls_integrations" is defined in the Nargo.toml ("name")
