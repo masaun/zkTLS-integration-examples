@@ -11,3 +11,6 @@ npx hardhat test ./test/MyContract.test.ts
 
 echo "Remove the Nargo.toml file in the ./noir directory"
 rm -rf ./noir/Nargo.toml
+
+echo "Remove the ./target directory in the ./noir directory"
+rm -rf ./noir/target
