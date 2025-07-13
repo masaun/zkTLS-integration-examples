@@ -3,14 +3,14 @@ mod zktls;
 
 use zktls::noir_web_prover_integrator::{verify_http_data};
 
-global MAX_RESPONSE_LENGTH: u32 = 320; // Maximum length of full response (header + body) in bytes
-global MAX_HEADER_LENGTH: u32 = 320;   // Maximum length of full header in bytes
-global MAX_START_LINE_LENGTH: u32 = 320; // Maximum length of start_line in bytes
-global MAX_HEADER_0_LENGTH: u32 = 320;   // Maximum length of header_0 in bytes
-global MAX_HEADER_1_LENGTH: u32 = 320;   // Maximum length of header_1 in bytes
-global MAX_HEADER_2_LENGTH: u32 = 320;   // Maximum length of header_2 in bytes
-global MAX_HEADER_3_LENGTH: u32 = 320;   // Maximum length of header_3 in bytes
-global MAX_BODY_LENGTH: u32 = 320;
+global MAX_RESPONSE_LENGTH: u32 = 320;   // Maximum length of full response (header + body) in bytes
+global MAX_HEADER_LENGTH: u32 = 320;     // Maximum length of full header in bytes
+global MAX_START_LINE_LENGTH: u32 = 50;  // Maximum length of start_line in bytes
+global MAX_HEADER_0_LENGTH: u32 = 50;    // Maximum length of header_0 in bytes
+global MAX_HEADER_1_LENGTH: u32 = 50;    // Maximum length of header_1 in bytes
+global MAX_HEADER_2_LENGTH: u32 = 50;    // Maximum length of header_2 in bytes
+global MAX_HEADER_3_LENGTH: u32 = 50;    // Maximum length of header_3 in bytes
+global MAX_BODY_LENGTH: u32 = 600;       // Maximum length of body in bytes
 
 /**
  * @notice - main function to verify HTTP data
@@ -18,7 +18,7 @@ global MAX_BODY_LENGTH: u32 = 320;
 fn main(
     response_vec: BoundedVec<u8, MAX_RESPONSE_LENGTH>,
     header_vec: BoundedVec<u8, MAX_HEADER_LENGTH>,
-    start_line_vec: BoundedVec<u8, MAX_HEADER_0_LENGTH>,
+    start_line_vec: BoundedVec<u8, MAX_START_LINE_LENGTH>,
     header_0_vec: BoundedVec<u8, MAX_HEADER_0_LENGTH>,
     header_1_vec: BoundedVec<u8, MAX_HEADER_1_LENGTH>,
     header_2_vec: BoundedVec<u8, MAX_HEADER_2_LENGTH>,
