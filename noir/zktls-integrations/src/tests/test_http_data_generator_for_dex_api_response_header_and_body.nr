@@ -2,17 +2,6 @@ use crate::zktls::test_http_data_okx_dex_api;
 
 #[test]
 fn generate_test_http_data_for_DEX_API_response_header_and_body() {
-    let start_line = "\"date\": \"Thu, 10 Jul 2025 03:34:36 GMT\"".as_bytes().map(|x| x);
-    let header_0 = "\"content-type\": \"application/json;charset=UTF-8\"".as_bytes().map(|x| x);
-    let header_1 = "\"transfer-encoding\": \"chunked\"".as_bytes().map(|x| x);
-    let header_2 = "Server: Workday".as_bytes().map(|x| x);
-    let header_3 = "\"vary\": \"Accept-Encoding\"".as_bytes().map(|x| x);
-    println(f"Start Line: {start_line}\n");
-    println(f"Header 0: {header_0}\n");
-    println(f"Header 1: {header_1}\n");
-    println(f"Header 2: {header_2}\n");
-    println(f"Header 3: {header_3}\n");
-
     let start_line_in_field = "\"date\": \"Thu, 10 Jul 2025 03:34:36 GMT\"".as_bytes().map(|x| x as Field);
     let header_0_in_field = "\"content-type\": \"application/json;charset=UTF-8\"".as_bytes().map(|x| x as Field);
     let header_1_in_field = "\"transfer-encoding\": \"chunked\"".as_bytes().map(|x| x as Field);
