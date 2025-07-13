@@ -9,7 +9,7 @@ it("proves and verifies on-chain", async () => {
   const contractFactory = await ethers.getContractFactory("ZkTLSIntegrationsProofVerifier");
   const contract = await contractFactory.deploy();
   await contract.waitForDeployment();
-  console.log("Deployed contract address of the MyContract.sol:", await contract.getAddress());
+  console.log("Deployed contract address of the ZkTLSIntegrationsProofVerifier.sol:", await contract.getAddress());
 
   // @dev - Run the API request sample script to get a swap quote
   await main();
