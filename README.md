@@ -51,7 +51,8 @@ sh ./scripts/OKX-DEX-API/example-requests-in-js/runningScript_example-post-reque
 ## Run the test of the Smart Contracts
 - Run the test of the Smart Contracts (`./test/circuits/ZkTLSIntegrationsProofVerifier.test.ts`)
 ```bash
-sh ./test/circuits/runningTest_ZkTLSIntegrationsProofVerifier.sh
+cd test
+sh circuits/runningTest_ZkTLSIntegrationsProofVerifier.sh
 ```
 
 <br>
