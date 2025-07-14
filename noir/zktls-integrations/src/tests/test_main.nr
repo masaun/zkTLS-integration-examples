@@ -1,5 +1,8 @@
 use crate::{
     main,
+    MAX_RESPONSE_LENGTH, MAX_HEADER_LENGTH, MAX_START_LINE_LENGTH, 
+    MAX_HEADER_0_LENGTH, MAX_HEADER_1_LENGTH, MAX_HEADER_2_LENGTH, MAX_HEADER_3_LENGTH, 
+    MAX_BODY_LENGTH,
     zktls::{
         test_inputs::{polynomial_input, polynomial_digest, NUM_HEADERS},
         test_http_data, 
@@ -17,37 +20,22 @@ fn test_main() {
     let polynomial_input: Field = polynomial_input(); // Polynomial input for zkTLS circuit
 
     // @dev - Fetch the test data of OKX DEX API
-    let response = test_http_data::response();
-    //let response = test_http_data_okx_dex_api::response();
-    let start_line = test_http_data_okx_dex_api::start_line();
-    let header_0 = test_http_data_okx_dex_api::header_0();
-    let header_1 = test_http_data_okx_dex_api::header_1();
-    let header_2 = test_http_data_okx_dex_api::header_1();
-    let header_3 = test_http_data_okx_dex_api::header_1();
-    let body = test_http_data_okx_dex_api::body();
-    let body_in_field = test_http_data_okx_dex_api::body_in_field();
-
-    // @dev - Create the polynominal digests of the test data of OKX DEX API
-    let start_line_digest = polynomial_digest(start_line, polynomial_input, 1);
-    let header_0_digest = polynomial_digest(header_0, polynomial_input, 1);
-    let header_1_digest = polynomial_digest(header_1, polynomial_input, 1);
-    let header_2_digest = polynomial_digest(header_2, polynomial_input, 1);
-    let header_3_digest = polynomial_digest(header_3, polynomial_input, 1);
-    //let body_digest = polynomial_digest(body, polynomial_input, 1);
-    let body_digest = polynomial_digest(body_in_field, polynomial_input, 1);
-
-    // @dev - Set the line digests for the test data of OKX DEX API
-    line_digests[0] = start_line_digest;
-    line_digests[1] = header_0_digest;
-    line_digests[2] = header_1_digest;
-    line_digests[3] = header_2_digest;
-    line_digests[4] = header_3_digest;
-    //line_digests[5] = body_digest;    // @dev - [Experimentation]: Whether or not the circuit test can finish to run. 
+    let response_vec: BoundedVec<u8, MAX_RESPONSE_LENGTH> = BoundedVec::from(test_http_data_long_header::response());
+    let start_line_vec: BoundedVec<u8, MAX_START_LINE_LENGTH> = BoundedVec::from(test_http_data_long_header::start_line().map(|x| x as u8));
+    let header_0_vec: BoundedVec<u8, MAX_HEADER_0_LENGTH> = BoundedVec::from(test_http_data_long_header::header_0().map(|x| x as u8));
+    let header_1_vec: BoundedVec<u8, MAX_HEADER_1_LENGTH> = BoundedVec::from(test_http_data_long_header::header_1().map(|x| x as u8));
+    let header_2_vec: BoundedVec<u8, MAX_HEADER_2_LENGTH> = BoundedVec::from(test_http_data_long_header::header_2().map(|x| x as u8));
+    let header_3_vec: BoundedVec<u8, MAX_HEADER_3_LENGTH> = BoundedVec::from(test_http_data_long_header::header_3().map(|x| x as u8));
+    let body_vec: BoundedVec<u8, MAX_BODY_LENGTH> = BoundedVec::from(test_http_data_long_header::body());
 
     // @dev - Noir Web Prover
     main(
-        response_plaintext_bytes,
-        line_digests,
-        polynomial_input
+        response_vec,
+        start_line_vec,
+        header_0_vec,
+        header_1_vec,
+        header_2_vec,
+        header_3_vec,
+        body_vec
     );
 }

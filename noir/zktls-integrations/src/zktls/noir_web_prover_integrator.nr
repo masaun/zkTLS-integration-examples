@@ -11,7 +11,6 @@ use poseidon::poseidon::bn254::{hash_1, hash_2};
 
 fn verify_http_data(
     response_bytes: [u8; 920],
-    header_field: [Field; 320],
     start_line_field: [Field; 50],
     header_0_field: [Field; 50],
     header_1_field: [Field; 50],
