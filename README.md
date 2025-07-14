@@ -49,10 +49,18 @@ sh ./scripts/OKX-DEX-API/example-requests-in-js/runningScript_example-post-reque
 <br>
 
 ## Run the test of the Smart Contracts
-- Run the test of the Smart Contracts (`./test/circuits/ZkTLSIntegrationsProofVerifier.test.ts`)
+- Run the test of the Smart Contracts for the `zktls-integrations` circuit (`./test/circuits/zktls-integrations/ZkTLSIntegrationsProofVerifier.test.ts`)
 ```bash
 cd test
-sh circuits/runningTest_ZkTLSIntegrationsProofVerifier.sh
+sh circuits/zktls-integrations/runningTest_ZkTLSIntegrationsProofVerifier.sh
+```
+
+<br>
+
+- Run the test of the Smart Contracts for the `zktls-integration-with-okx-dex-api` circuit (`./test/circuits/zktls-integration-with-okx-dex-api/ZkTLSIntegrationsProofVerifier.test.ts`)
+```bash
+cd test
+sh circuits/zktls-integration-with-okx-dex-api/runningTest_ZkTLSIntegrationsProofVerifier.sh
 ```
 
 <br>

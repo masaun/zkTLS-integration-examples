@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import hre, { ethers } from "hardhat";
 
-import { main, getData } from "../../scripts/OKX-DEX-API/okx-dex-sdk-integrations/okx-dex-sdk-api-request-sample"; 
+//import { main, getData } from "../../../scripts/OKX-DEX-API/okx-dex-sdk-integrations/okx-dex-sdk-api-request-sample"; 
 
 
 it("proves and verifies on-chain", async () => {
@@ -10,14 +10,24 @@ it("proves and verifies on-chain", async () => {
   const contract = await contractFactory.deploy();
   await contract.waitForDeployment();
   console.log("Deployed contract address of the ZkTLSIntegrationsProofVerifier.sol:", await contract.getAddress());
+  
+  // @dev - sample API response (header + body), which is referenced from the test_http_data_long_header.nr 
+  const input = {
+    response: `HTTP/1.1 200 OK
+    content-type: application/json; charset=utf-8
+    content-encoding: gzip
+    Transfer-Encoding: chunked
+    Connection: close
+    Source-Age: 153
 
-  // @dev - Run the API request sample script to get a swap quote
-  await main();
-  //await getData();
+    {
+      "hello": "world"
+    }`
+  }
+  //const input = { x: 1, y: 2 };
 
-  // Generate a proof
+  // @dev - Generate a proof
   const { noir, backend } = await hre.noir.getCircuit("zktls_integrations"); // @dev - "zktls_integrations" is defined in the Nargo.toml ("name")
-  const input = { x: 1, y: 2 };
   const { witness } = await noir.execute(input);
   const { proof, publicInputs } = await backend.generateProof(witness, {
     keccak: true,
