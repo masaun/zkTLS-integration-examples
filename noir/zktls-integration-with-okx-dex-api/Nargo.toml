@@ -1,0 +1,13 @@
+[package]
+name = "zktls_integrations"
+type = "bin"
+authors = ["masaun"]
+compiler_version = ">=1.0.0"
+#compiler_version = ">=0.35.0"
+version = "0.0.1"
+
+[dependencies]
+# zkTLS
+noir_web_prover = { tag = "feat/package-updates_poseidon", git = "https://github.com/masaun/noir-web-prover-circuits", directory = "http" }
+#noir_web_prover = { tag = "main", git = "https://github.com/pluto/noir-web-prover-circuits", directory = "http" }
+poseidon = { tag = "v0.1.1", git = "https://github.com/noir-lang/poseidon" }
