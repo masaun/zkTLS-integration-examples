@@ -10,12 +10,6 @@ it("proves and verifies on-chain", async () => {
   const contract = await contractFactory.deploy();
   await contract.waitForDeployment();
   console.log("Deployed contract address of the ZkTLSIntegrationsProofVerifier.sol:", await contract.getAddress());
-
-  // @dev - [TODO]: Import the sample API response.
-  
-
-  // Generate a proof
-  const { noir, backend } = await hre.noir.getCircuit("zktls_integrations"); // @dev - "zktls_integrations" is defined in the Nargo.toml ("name")
   
   // @dev - sample API response (header + body), which is referenced from the test_http_data_long_header.nr 
   const input = {
@@ -32,6 +26,8 @@ it("proves and verifies on-chain", async () => {
   }
   //const input = { x: 1, y: 2 };
 
+  // @dev - Generate a proof
+  const { noir, backend } = await hre.noir.getCircuit("zktls_integrations"); // @dev - "zktls_integrations" is defined in the Nargo.toml ("name")
   const { witness } = await noir.execute(input);
   const { proof, publicInputs } = await backend.generateProof(witness, {
     keccak: true,
