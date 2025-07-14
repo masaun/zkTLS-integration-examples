@@ -5,7 +5,7 @@ import { HonkVerifier } from "./honk-verifier/honk_vk.sol";
 //import {HonkVerifier} from "../noir/target/zktls_integrations.sol";
 
 contract ZkTLSIntegrationsProofVerifier {
-    HonkVerifier public verifier = new HonkVerifier();
+    HonkVerifier public verifier = new HonkVerifier(); // @dev - Deploy the HonkVerifier contract
 
     function verify(
         bytes calldata proof,
