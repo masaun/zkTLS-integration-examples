@@ -3,6 +3,8 @@ mod zktls;
 
 use zktls::noir_web_prover_integrator::{verify_http_data};
 
+use std::hash::pedersen_hash;
+
 global MAX_RESPONSE_LENGTH: u32 = 4200;  // Maximum length of full response (header + body) in bytes
 global MAX_START_LINE_LENGTH: u32 = 50;  // Maximum length of start_line in bytes
 global MAX_HEADER_0_LENGTH: u32 = 50;    // Maximum length of header_0 in bytes
@@ -21,8 +23,9 @@ fn main(
     header_1_vec: BoundedVec<u8, MAX_HEADER_1_LENGTH>,
     header_2_vec: BoundedVec<u8, MAX_HEADER_2_LENGTH>,
     header_3_vec: BoundedVec<u8, MAX_HEADER_3_LENGTH>,
-    body_vec: BoundedVec<u8, MAX_BODY_LENGTH>
-) {
+    body_vec: BoundedVec<u8, MAX_BODY_LENGTH>,
+    secret: Field
+) -> pub Field {
     // @dev - Convert a BoundedVec value to a bytes (uint8Array) value
     let response_bytes = response_vec.storage().map(|x| x);
     //let header_field = header_vec.storage().map(|x| x as Field);
@@ -45,4 +48,10 @@ fn main(
         body_field
     );
     //verify_http_data(response_plaintext_bytes, line_digests, polynomial_input);
+
+    // @dev - Generate a nullifier and commitment
+    let nullifier = pedersen_hash([start_line_field[0], header_0_field[0], header_1_field[0], header_2_field[0], header_3_field[0], body_field[0]]);
+    let commitment = pedersen_hash([nullifier, secret]);
+
+    nullifier
 }
