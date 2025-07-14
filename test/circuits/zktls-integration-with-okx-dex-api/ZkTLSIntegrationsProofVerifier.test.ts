@@ -11,10 +11,10 @@ it("proves and verifies on-chain", async () => {
   console.log("Deployed contract address of the ZkTLSIntegrationsProofVerifier.sol:", await contract.getAddress());
 
   // @dev - Run the API request sample script to get a swap quote
-  const fullApiResponse = await main();
-  console.log(`Full API Response (Header + Body): ${JSON.stringify(fullApiResponse, null, 2)} \n`); // @dev - [Log]: Successfully fetched swap quote
+  const { fullApiResponse, apiResponseBody } = await main();
+  console.log(`fullApiResponse - Full API Response (Header + Body): ${JSON.stringify(fullApiResponse, null, 2)} \n`); // @dev - [Log]: Successfully fetched swap quote
+  console.log(`apiResponseBody - API Response Body: ${JSON.stringify(fullApiResponse, null, 2)} \n`); // @dev - [Log]: Successfully fetched swap quote
   //await getData();
-
 
   // Generate a proof
   const { noir, backend } = await hre.noir.getCircuit("zktls-integration-with-okx-dex-api"); // @dev - "zktls-integration-with-okx-dex-api" is defined in the Nargo.toml ("name")

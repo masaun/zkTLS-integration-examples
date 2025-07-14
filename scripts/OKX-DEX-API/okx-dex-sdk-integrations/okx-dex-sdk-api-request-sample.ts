@@ -135,7 +135,7 @@ export async function getSwapQuote(
  * @notice - Run this script to test the API request
  * @dev - This function can be called in the ./test directory and FE directory.
  */
-export async function main(): Promise<{ fullApiResponse: any }> {
+export async function main(): Promise<{ fullApiResponse: any, apiResponseBody: any }> {
     // Get a header information
     const { timestamp, method, requestPath } = getData();
     const headers = getHeaders(timestamp, method, requestPath);
@@ -151,7 +151,7 @@ export async function main(): Promise<{ fullApiResponse: any }> {
     const fullApiResponse = apiResponseHeader + apiResponseBody;
     console.log(`Full API Response (Header + Body): ${JSON.stringify(fullApiResponse, null, 2)} \n`); // @dev - [Log]: Successfully fetched swap quote
 
-    return { fullApiResponse }
+    return { fullApiResponse, apiResponseBody }
 }
 
 /**
