@@ -17,10 +17,6 @@ fn verify_http_data(
     header_2_field: [Field; 50],
     header_3_field: [Field; 50],
     body_field: [Field; 600]
-    //response_plaintext_bytes: [u8; 4185],
-    //response_plaintext_bytes: [u8; 320],
-    //line_digests: [Field; 10], // @dev - Aligned to the "NUM_HEADERS" -> At this point, we assume 5 headers: [start_line, header_0, ..., header_4]
-    //polynomial_input: Field
 ) {
     // @dev - Setup the line digests and polynomial input
     let mut line_digests = [Field::default(); NUM_HEADERS];
