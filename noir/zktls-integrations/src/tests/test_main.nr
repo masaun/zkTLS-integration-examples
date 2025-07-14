@@ -21,15 +21,17 @@ fn test_main() {
     let header_2_vec: BoundedVec<u8, MAX_HEADER_2_LENGTH> = BoundedVec::from(test_http_data_long_header::header_2().map(|x| x as u8));
     let header_3_vec: BoundedVec<u8, MAX_HEADER_3_LENGTH> = BoundedVec::from(test_http_data_long_header::header_3().map(|x| x as u8));
     let body_vec: BoundedVec<u8, MAX_BODY_LENGTH> = BoundedVec::from(test_http_data_long_header::body());
+    let secret = 1234567;
 
     // @dev - Noir Web Prover
-    main(
-        response_vec,
-        start_line_vec,
-        header_0_vec,
-        header_1_vec,
-        header_2_vec,
-        header_3_vec,
-        body_vec
-    );
+    let nullifier = main(
+                            response_vec,
+                            start_line_vec,
+                            header_0_vec,
+                            header_1_vec,
+                            header_2_vec,
+                            header_3_vec,
+                            body_vec,
+                            secret
+                        );
 }
