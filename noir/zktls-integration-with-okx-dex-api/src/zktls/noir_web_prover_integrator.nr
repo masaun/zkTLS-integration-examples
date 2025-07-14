@@ -1,4 +1,11 @@
-use crate::zktls::test_inputs::{polynomial_input, NUM_HEADERS};
+use crate::{
+    MAX_RESPONSE_LENGTH, MAX_START_LINE_LENGTH, 
+    MAX_HEADER_0_LENGTH, MAX_HEADER_1_LENGTH, MAX_HEADER_2_LENGTH, MAX_HEADER_3_LENGTH, 
+    MAX_BODY_LENGTH,
+    zktls::{
+        test_inputs::{polynomial_input, NUM_HEADERS}
+    }
+};
 
 use noir_web_prover::{
     parser::Parser,
@@ -10,13 +17,13 @@ use poseidon::poseidon::bn254::{hash_1, hash_2};
 
 
 fn verify_http_data(
-    response_bytes: [u8; 920],
-    start_line_field: [Field; 50],
-    header_0_field: [Field; 50],
-    header_1_field: [Field; 50],
-    header_2_field: [Field; 50],
-    header_3_field: [Field; 50],
-    body_field: [Field; 600]
+    response_bytes: [u8; MAX_RESPONSE_LENGTH],
+    start_line_field: [Field; MAX_START_LINE_LENGTH],
+    header_0_field: [Field; MAX_HEADER_0_LENGTH],
+    header_1_field: [Field; MAX_HEADER_1_LENGTH],
+    header_2_field: [Field; MAX_HEADER_2_LENGTH],
+    header_3_field: [Field; MAX_HEADER_3_LENGTH],
+    body_field: [Field; MAX_BODY_LENGTH]
 ) {
     // @dev - Setup the line digests and polynomial input
     let mut line_digests = [Field::default(); NUM_HEADERS];
