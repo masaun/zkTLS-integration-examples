@@ -1,5 +1,5 @@
 [package]
-name = "zktls_integration_with_okx_dex_api"
+name = "zktls_docusign"
 type = "bin"
 authors = ["masaun"]
 compiler_version = ">=1.0.0"
