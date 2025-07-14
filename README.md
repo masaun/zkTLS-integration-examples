@@ -26,28 +26,6 @@ sh okx-dex-sdk-integrations/runningScript_okx-dex-sdk-api-request-sample.sh
 
 <br>
 
-## Run (in `TS`)
-- GET
-```bash
-sh ./scripts/OKX-DEX-API/example-requests-in-ts/runningScript_example-get-request.sh
-```
-
-<br>
-
-## Run the script for DEX API (in `JS`)
-
-- GET
-```bash
-sh ./scripts/OKX-DEX-API/example-requests-in-js/runningScript_example-get-request.sh
-```
-
-- POST
-```bash
-sh ./scripts/OKX-DEX-API/example-requests-in-js/runningScript_example-post-request.sh
-```
-
-<br>
-
 ## Run the test of the Smart Contracts
 - Run the test of the Smart Contracts for the `zktls-integrations` circuit (`./test/circuits/zktls-integrations/ZkTLSIntegrationsProofVerifier.test.ts`)
 ```bash
