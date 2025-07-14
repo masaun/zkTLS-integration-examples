@@ -1,6 +1,0 @@
-[workspace]
-members = [
-  "zktls-integrations",
-  "zktls-integration-with-okx-dex-api",
-  "zktls-docusign"
-]

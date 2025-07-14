@@ -25,7 +25,13 @@ bb write_vk -b target/zktls_integrations.json -o target/vk --oracle_hash keccak
 echo "Generate a Solidity Verifier contract from the vkey..."
 bb write_solidity_verifier -k target/vk/vk -o target/Verifier.sol
 
-echo "Copy a Solidity Verifier contract-generated (Verifier.sol) into the ../../contracts/circuits/honk-verifier directory"
-cp target/Verifier.sol ../../contracts/circuits/honk-verifier/honk_vk.sol
+echo "Copy a Solidity Verifier contract-generated (Verifier.sol) into the ../../contracts/circuits/zktls-integration-with-okx-dex-api/honk-verifier directory"
+cp target/Verifier.sol ../../contracts/circuits/zktls-integration-with-okx-dex-api/honk-verifier/honk_vk.sol
+
+echo "Remove the Nargo.toml file in the ./noir directory"
+rm -rf ../Nargo.toml
+
+echo "Remove the ./target directory in the ./noir directory"
+rm -rf ../target
 
 echo "Done" 
