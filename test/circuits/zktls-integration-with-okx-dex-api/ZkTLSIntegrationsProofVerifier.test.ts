@@ -3,7 +3,6 @@ import hre, { ethers } from "hardhat";
 
 import { main, getData } from "../../../scripts/OKX-DEX-API/okx-dex-sdk-integrations/okx-dex-sdk-api-request-sample"; 
 
-
 it("proves and verifies on-chain", async () => {
   // Deploy the ZkTLSIntegrationsProofVerifier contract, which the HonkVerifier contract is inherited.
   const contractFactory = await ethers.getContractFactory("ZkTLSIntegrationsProofVerifier");
