@@ -2,11 +2,11 @@
 #source ../../.env
 #. ./.env
 
-echo "Compile the Smart Contracts (ZkTLSIntegrationsProofVerifier.sol)"
+echo "Compile the Smart Contracts for the zktls-integrations circuit (ZkTLSIntegrationsProofVerifier.sol)"
 npx hardhat compile
 
-echo "Run the test of the Smart Contracts ZkTLSIntegrationsProofVerifier.sol)"
-npx hardhat test ./circuits/ZkTLSIntegrationsProofVerifier.test.ts
+echo "Run the test of the Smart Contracts for the zktls-integrations circuit (ZkTLSIntegrationsProofVerifier.sol)"
+npx hardhat test ./circuits/zktls-integrations/ZkTLSIntegrationsProofVerifier.test.ts
 #npx hardhat test ./test/MyContract.test.ts --network localhost
 
 echo "Remove the Nargo.toml file in the ./noir directory"
