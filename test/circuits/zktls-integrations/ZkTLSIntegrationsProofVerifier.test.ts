@@ -16,7 +16,22 @@ it("proves and verifies on-chain", async () => {
 
   // Generate a proof
   const { noir, backend } = await hre.noir.getCircuit("zktls_integrations"); // @dev - "zktls_integrations" is defined in the Nargo.toml ("name")
-  const input = { x: 1, y: 2 };
+  
+  // @dev - sample API response (header + body), which is referenced from the test_http_data_long_header.nr 
+  const input = {
+    response: `HTTP/1.1 200 OK
+    content-type: application/json; charset=utf-8
+    content-encoding: gzip
+    Transfer-Encoding: chunked
+    Connection: close
+    Source-Age: 153
+
+    {
+      "hello": "world"
+    }`
+  }
+  //const input = { x: 1, y: 2 };
+
   const { witness } = await noir.execute(input);
   const { proof, publicInputs } = await backend.generateProof(witness, {
     keccak: true,
