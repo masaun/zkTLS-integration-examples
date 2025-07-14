@@ -108,7 +108,7 @@ it("proves and verifies on-chain", async () => {
   const nullifier = publicInputs[0];
 
   // it matches because we marked y as `pub` in `main.nr`
-  expect(publicInputs[0]).to.eq(BigInt(nullifier));
+  expect(publicInputs[0]).to.eq(nullifier);
   //expect(BigInt(publicInputs[0])).to.eq(BigInt(publicInputs[0]));
 
   // Verify the proof on-chain
