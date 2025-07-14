@@ -3,13 +3,13 @@ mod zktls;
 
 use zktls::noir_web_prover_integrator::{verify_http_data};
 
-global MAX_RESPONSE_LENGTH: u32 = 920;   // Maximum length of full response (header + body) in bytes
+global MAX_RESPONSE_LENGTH: u32 = 4200;  // Maximum length of full response (header + body) in bytes
 global MAX_START_LINE_LENGTH: u32 = 50;  // Maximum length of start_line in bytes
 global MAX_HEADER_0_LENGTH: u32 = 50;    // Maximum length of header_0 in bytes
 global MAX_HEADER_1_LENGTH: u32 = 50;    // Maximum length of header_1 in bytes
 global MAX_HEADER_2_LENGTH: u32 = 50;    // Maximum length of header_2 in bytes
 global MAX_HEADER_3_LENGTH: u32 = 50;    // Maximum length of header_3 in bytes
-global MAX_BODY_LENGTH: u32 = 600;       // Maximum length of body in bytes
+global MAX_BODY_LENGTH: u32 = 3100;      // Maximum length of body in bytes
 
 /**
  * @notice - main function to verify HTTP data
