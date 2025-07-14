@@ -3,13 +3,13 @@ import hre, { ethers } from "hardhat";
 
 //import { main, getData } from "../../../scripts/OKX-DEX-API/okx-dex-sdk-integrations/okx-dex-sdk-api-request-sample"; 
 
-const MAX_RESPONSE_LENGTH = 4200;  // Maximum length of full response (header + body) in bytes
+const MAX_RESPONSE_LENGTH = 920;   // Maximum length of full response (header + body) in bytes
 const MAX_START_LINE_LENGTH = 50;  // Maximum length of start_line in bytes
 const MAX_HEADER_0_LENGTH = 50;    // Maximum length of header_0 in bytes
 const MAX_HEADER_1_LENGTH = 50;    // Maximum length of header_1 in bytes
 const MAX_HEADER_2_LENGTH = 50;    // Maximum length of header_2 in bytes
 const MAX_HEADER_3_LENGTH = 50;    // Maximum length of header_3 in bytes
-const MAX_BODY_LENGTH = 3100;      // Maximum length of body in bytes
+const MAX_BODY_LENGTH = 600;       // Maximum length of body in bytes
 
 
 it("proves and verifies on-chain", async () => {
