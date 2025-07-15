@@ -10,7 +10,6 @@ global MAX_START_LINE_LENGTH: u32 = 50;  // Maximum length of start_line in byte
 global MAX_HEADER_0_LENGTH: u32 = 50;    // Maximum length of header_0 in bytes
 global MAX_HEADER_1_LENGTH: u32 = 50;    // Maximum length of header_1 in bytes
 global MAX_HEADER_2_LENGTH: u32 = 50;    // Maximum length of header_2 in bytes
-global MAX_HEADER_3_LENGTH: u32 = 50;    // Maximum length of header_3 in bytes
 global MAX_BODY_LENGTH: u32 = 3100;      // Maximum length of body in bytes
 
 /**
@@ -22,7 +21,6 @@ fn main(
     header_0_vec: BoundedVec<u8, MAX_HEADER_0_LENGTH>,
     header_1_vec: BoundedVec<u8, MAX_HEADER_1_LENGTH>,
     header_2_vec: BoundedVec<u8, MAX_HEADER_2_LENGTH>,
-    header_3_vec: BoundedVec<u8, MAX_HEADER_3_LENGTH>,
     body_vec: BoundedVec<u8, MAX_BODY_LENGTH>,
     secret: Field
 ) -> pub Field {
@@ -33,7 +31,6 @@ fn main(
     let header_0_field = header_0_vec.storage().map(|x| x as Field);
     let header_1_field = header_1_vec.storage().map(|x| x as Field);
     let header_2_field = header_2_vec.storage().map(|x| x as Field);
-    let header_3_field = header_3_vec.storage().map(|x| x as Field);
     let body_field = body_vec.storage().map(|x| x as Field);
 
     // @dev - Noir Web Prover
@@ -44,7 +41,6 @@ fn main(
         header_0_field,
         header_1_field,
         header_2_field,
-        header_3_field,
         body_field
     );
     //verify_http_data(response_plaintext_bytes, line_digests, polynomial_input);

@@ -19,7 +19,6 @@ fn test_main_docusign() {
     let header_0_vec: BoundedVec<u8, MAX_HEADER_0_LENGTH> = BoundedVec::from(test_http_data_docusign::header_0().map(|x| x as u8));
     let header_1_vec: BoundedVec<u8, MAX_HEADER_1_LENGTH> = BoundedVec::from(test_http_data_docusign::header_1().map(|x| x as u8));
     let header_2_vec: BoundedVec<u8, MAX_HEADER_2_LENGTH> = BoundedVec::from(test_http_data_docusign::header_2().map(|x| x as u8));
-    let header_3_vec: BoundedVec<u8, MAX_HEADER_3_LENGTH> = BoundedVec::from(test_http_data_docusign::header_3().map(|x| x as u8));
     let body_vec: BoundedVec<u8, MAX_BODY_LENGTH> = BoundedVec::from(test_http_data_docusign::body());
     let secret = 1234567;
 
@@ -30,7 +29,6 @@ fn test_main_docusign() {
                             header_0_vec,
                             header_1_vec,
                             header_2_vec,
-                            header_3_vec,
                             body_vec,
                             secret
                         );
