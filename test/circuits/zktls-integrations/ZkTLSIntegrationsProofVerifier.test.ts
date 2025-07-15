@@ -99,7 +99,7 @@ it("proves and verifies on-chain", async () => {
   //const input = { x: 1, y: 2 };
 
   // @dev - Generate a proof
-  const { noir, backend } = await hre.noir.getCircuit("zktls_integrations"); // @dev - "zktls_integrations" is defined in the Nargo.toml ("name")
+  const { noir, backend } = await hre.noir.getCircuit("zktls_docusign"); // @dev - "zktls_docusign" is defined in the Nargo.toml ("name")
   const { witness } = await noir.execute(input);
   const { proof, publicInputs } = await backend.generateProof(witness, {
     keccak: true,
