@@ -1,16 +1,17 @@
 /**
  * @notice - HTTP data, which have a long HTTP header, for testing purpose.
+ * @dev - DocuSign API reference: https://developers.docusign.com/docs/esign-rest-api/reference/billing/payments/get/
  */
 
-// HTTP/1.1 200 OK
-// content-type: application/json; charset=utf-8
-// content-encoding: gzip
-// Transfer-Encoding: chunked
-// Connection: close
-// Source-Age: 153
+// Here is the full API response (of DocuSign)
+// NOTE: No API response "header". Only API response "body" is returned.
 
 // {
-//   "hello": "world"
+//   "paymentId": "sample string 1",
+//   "amount": "sample string 2",
+//   "paymentDate": "sample string 3",
+//   "paymentNumber": "sample string 4",
+//   "description": "sample string 5"
 // }
 pub fn response() -> [u8; 178] {
     [
@@ -71,7 +72,11 @@ pub fn header_4() -> [Field; 15] {
 }
 
 // {
-//   "hello": "world"
+//   "paymentId": "sample string 1",
+//   "amount": "sample string 2",
+//   "paymentDate": "sample string 3",
+//   "paymentNumber": "sample string 4",
+//   "description": "sample string 5"
 // }
 pub fn body() -> [u8; 24] {
     [
