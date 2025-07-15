@@ -24,7 +24,11 @@ cd noir/zktls-integration-with-okx-dex-api
 sh circuit_test.sh
 ```
 
-
+- Run the test of the `DocuSign` zkTLS circuit 
+```bash
+cd noir/zktls-docusign
+sh circuit_test.sh
+```
 
 
 <br>
