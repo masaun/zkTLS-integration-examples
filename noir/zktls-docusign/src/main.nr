@@ -46,7 +46,7 @@ fn main(
     //verify_http_data(response_plaintext_bytes, line_digests, polynomial_input);
 
     // @dev - Generate a nullifier and commitment
-    let nullifier = pedersen_hash([start_line_field[0], header_0_field[0], header_1_field[0], header_2_field[0], header_3_field[0], body_field[0]]);
+    let nullifier = pedersen_hash([start_line_field[0], header_0_field[0], header_1_field[0], header_2_field[0], body_field[0]]);
     let commitment = pedersen_hash([nullifier, secret]);
 
     nullifier
