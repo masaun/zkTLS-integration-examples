@@ -14,13 +14,13 @@ if ! nargo compile; then
 fi
 
 echo "Gate count:"
-bb gates -b target/zktls_docusign.json | jq '.functions[0].circuit_size'
+bb gates -b target/zktls_integrations.json | jq '.functions[0].circuit_size'
 
 # Create version-specific directory
 mkdir -p "target/vk"
 
 echo "Generating a vkey (verification key)..."
-bb write_vk -b target/zktls_docusign.json -o target/vk --oracle_hash keccak
+bb write_vk -b target/zktls_integrations.json -o target/vk --oracle_hash keccak
 
 echo "Generate a Solidity Verifier contract from the vkey..."
 bb write_solidity_verifier -k target/vk/vk -o target/Verifier.sol
