@@ -1,6 +1,6 @@
 use crate::{
     MAX_RESPONSE_LENGTH, MAX_START_LINE_LENGTH, 
-    MAX_HEADER_0_LENGTH, MAX_HEADER_1_LENGTH, MAX_HEADER_2_LENGTH, MAX_HEADER_3_LENGTH, 
+    MAX_HEADER_0_LENGTH, MAX_HEADER_1_LENGTH, MAX_HEADER_2_LENGTH, 
     MAX_BODY_LENGTH,
     zktls::{
         test_inputs::{polynomial_input, NUM_HEADERS}
@@ -22,7 +22,6 @@ fn verify_http_data(
     header_0_field: [Field; MAX_HEADER_0_LENGTH],
     header_1_field: [Field; MAX_HEADER_1_LENGTH],
     header_2_field: [Field; MAX_HEADER_2_LENGTH],
-    header_3_field: [Field; MAX_HEADER_3_LENGTH],
     body_field: [Field; MAX_BODY_LENGTH]
 ) {
     // @dev - Setup the line digests and polynomial input
@@ -34,7 +33,6 @@ fn verify_http_data(
     let header_0_digest = polynomial_digest(header_0_field, polynomial_input, 1);
     let header_1_digest = polynomial_digest(header_1_field, polynomial_input, 1);
     let header_2_digest = polynomial_digest(header_2_field, polynomial_input, 1);
-    let header_3_digest = polynomial_digest(header_3_field, polynomial_input, 1);
     //let body_digest = polynomial_digest(body, polynomial_input, 1);
     let body_digest = polynomial_digest(body_field, polynomial_input, 1);
 
@@ -43,7 +41,6 @@ fn verify_http_data(
     line_digests[1] = header_0_digest;
     line_digests[2] = header_1_digest;
     line_digests[3] = header_2_digest;
-    line_digests[4] = header_3_digest;
     //line_digests[5] = body_digest;    // @dev - [Experimentation]: Whether or not the circuit test can finish to run. 
 
     // @dev - Setup
