@@ -10,6 +10,17 @@
 
 <br>
 
+## ZK circuit test
+
+- Run the test of the `OKX DEX API` zkTLS circuit 
+```bash
+cd noir/zktls-integrations
+sh circuit_test.sh
+```
+
+
+<br>
+
 ## Run (in `TS`) with `OKX DEX SDK`
 
 - Create an `.env` by copying the `.env.example`
