@@ -1,5 +1,5 @@
 [package]
-name = "zktls_docusign"
+name = "zktls_integrations"
 type = "bin"
 authors = ["masaun"]
 compiler_version = ">=1.0.0"
