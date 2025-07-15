@@ -12,11 +12,19 @@
 
 ## ZK circuit test
 
-- Run the test of the `OKX DEX API` zkTLS circuit 
+- Run the test of the `Sample` zkTLS circuit 
 ```bash
 cd noir/zktls-integrations
 sh circuit_test.sh
 ```
+
+- Run the test of the `OKX DEX API` zkTLS circuit 
+```bash
+cd noir/zktls-integration-with-okx-dex-api
+sh circuit_test.sh
+```
+
+
 
 
 <br>
