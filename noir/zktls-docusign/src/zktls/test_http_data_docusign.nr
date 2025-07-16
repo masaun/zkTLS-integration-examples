@@ -80,5 +80,6 @@ pub fn response() -> [u8; 211] {
 // }
 pub fn body() -> [u8; 211] {
     let response_body_plain_test = response_body_plain_test();
-
+    let response_body_bytes = response_body_plain_test.as_bytes().map(|x| x as u8);
+    response_body_bytes
 }
