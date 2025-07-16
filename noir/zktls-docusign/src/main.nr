@@ -37,10 +37,10 @@ fn main(
     verify_http_data(
         response_bytes,
         //header_field,
-        start_line_field,
-        header_0_field,
-        header_1_field,
-        header_2_field,
+        // start_line_field,
+        // header_0_field,
+        // header_1_field,
+        // header_2_field,
         body_field
     );
     //verify_http_data(response_plaintext_bytes, line_digests, polynomial_input);
