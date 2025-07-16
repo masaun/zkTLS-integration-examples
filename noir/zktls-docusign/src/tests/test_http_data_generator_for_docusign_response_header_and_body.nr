@@ -22,7 +22,7 @@ fn generate_test_http_data_for_docusign_response_header_and_body() {
  * @notice - Example response body of the DEX API in a plain text format.
  */
 fn response_header_plain_test() -> str<7> {
-    let response_header_plain_test = "Nothing"
+    let response_header_plain_test = "Nothing";
     
     // @dev - Returning the API response header as a string
     response_header_plain_test
@@ -31,7 +31,7 @@ fn response_header_plain_test() -> str<7> {
 /**
  * @notice - Example response body of the DEX API in a plain text format.
  */
-fn response_body_plain_test() -> str<3073> {
+fn response_body_plain_test() -> str<211> {
     // {
     //   "paymentId": "sample string 1",
     //   "amount": "sample string 2",
@@ -40,12 +40,12 @@ fn response_body_plain_test() -> str<3073> {
     //   "description": "sample string 5"
     // }
 
-    let response_body_plain_test = "{\
-        \"paymentId\": \"sample string 1\",\
-        \"amount\": \"sample string 2\",\
-        \"paymentDate\": \"sample string 3\",\
-        \"paymentNumber\": \"sample string 4\",\
-        \"description\": \"sample string 5\"\
+    let response_body_plain_test = "{
+        \"paymentId\": \"sample string 1\",
+        \"amount\": \"sample string 2\",
+        \"paymentDate\": \"sample string 3\",
+        \"paymentNumber\": \"sample string 4\",
+        \"description\": \"sample string 5\"
     }";
 
     // @dev - Returning the response as a string
