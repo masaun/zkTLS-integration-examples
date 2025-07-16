@@ -37,11 +37,12 @@ fn verify_http_data(
     let body_digest = polynomial_digest(body_field, polynomial_input, 1);
 
     // @dev - Set the line digests for the test data of OKX DEX API
-    line_digests[0] = start_line_digest;
-    line_digests[1] = header_0_digest;
-    line_digests[2] = header_1_digest;
-    line_digests[3] = header_2_digest;
-    line_digests[5] = body_digest;    // @dev - [Experimentation]: Whether or not the circuit test can finish to run. 
+    // line_digests[0] = start_line_digest;
+    // line_digests[1] = header_0_digest;
+    // line_digests[2] = header_1_digest;
+    // line_digests[3] = header_2_digest;
+    line_digests[0] = body_digest;
+    //line_digests[5] = body_digest;    // @dev - [Experimentation]: Whether or not the circuit test can finish to run. 
 
     // @dev - Setup
     let machine_state = Parser::default(); // @dev - This "machine_state" is also called the "Self" as well.
