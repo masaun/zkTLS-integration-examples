@@ -64,90 +64,20 @@ fn response_header_plain_test() -> str<1112> {
  * @notice - Example response body of the DEX API in a plain text format.
  */
 fn response_body_plain_test() -> str<3073> {
-    let response_body_plain_test = "{
-        \"chainId\": \"8453\",
-        \"chainIndex\": \"8453\",
-        \"contextSlot\": 0,
-        \"dexRouterList\": [
-            {
-            \"router\": \"0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE--0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913\",
-            \"routerPercent\": \"100\",
-            \"subRouterList\": [
-                {
-                \"dexProtocol\": [
-                    {
-                    \"dexName\": \"Uniswap V3\",
-                    \"percent\": \"100\"
-                    }
-                ],
-                \"fromToken\": {
-                    \"decimal\": \"18\",
-                    \"isHoneyPot\": false,
-                    \"taxRate\": \"0\",
-                    \"tokenContractAddress\": \"0x4200000000000000000000000000000000000006\",
-                    \"tokenSymbol\": \"WETH\",
-                    \"tokenUnitPrice\": \"2774.857698511993422849\"
-                },
-                \"toToken\": {
-                    \"decimal\": \"6\",
-                    \"isHoneyPot\": false,
-                    \"taxRate\": \"0\",
-                    \"tokenContractAddress\": \"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913\",
-                    \"tokenSymbol\": \"USDC\",
-                    \"tokenUnitPrice\": \"1.00004407486844178\"
-                }
-                }
-            ]
-            }
-        ],
-        \"estimateGasFee\": \"135000\",
-        \"fromToken\": {
-            \"decimal\": \"18\",
-            \"isHoneyPot\": false,
-            \"taxRate\": \"0\",
-            \"tokenContractAddress\": \"0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee\",
-            \"tokenSymbol\": \"BASE_ETH\",
-            \"tokenUnitPrice\": \"2774.857698511993422849\"
-        },
-        \"fromTokenAmount\": \"500000000000000\",
-        \"priceImpactPercentage\": \"0.01\",
-        \"quoteCompareList\": [
-            {
-            \"amountOut\": \"1.387474\",
-            \"dexLogo\": \"https://static.okx.com/cdn/wallet/logo/UNI.png\",
-            \"dexName\": \"Uniswap V3\",
-            \"tradeFee\": \"0.00139188672804195\"
-            },
-            {
-            \"amountOut\": \"1.387256\",
-            \"dexLogo\": \"https://static.okx.com/cdn/wallet/logo/Dex_BaseSwap.png\",
-            \"dexName\": \"BaseSwap V3\",
-            \"tradeFee\": \"0.00197957223543744\"
-            },
-            {
-            \"amountOut\": \"1.386399\",
-            \"dexLogo\": \"https://static.okx.com/cdn/explorer/dex/logo/solidly.png\",
-            \"dexName\": \"Solidly V3\",
-            \"tradeFee\": \"0.00197957223543744\"
-            },
-            {
-            \"amountOut\": \"1.386382\",
-            \"dexLogo\": \"https://static.okx.com/cdn/explorer/dex/logo/Dex_Aerodrome.png\",
-            \"dexName\": \"AerodromeSlipstream\",
-            \"tradeFee\": \"0.00197957223543744\"
-            }
-        ],
-        \"swapMode\": \"exactIn\",
-        \"toToken\": {
-            \"decimal\": \"6\",
-            \"isHoneyPot\": false,
-            \"taxRate\": \"0\",
-            \"tokenContractAddress\": \"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913\",
-            \"tokenSymbol\": \"USDC\",
-            \"tokenUnitPrice\": \"1.00004407486844178\"
-        },
-        \"toTokenAmount\": \"1387474\",
-        \"tradeFee\": \"0.00139188672804195\"
+    // {
+    //   "paymentId": "sample string 1",
+    //   "amount": "sample string 2",
+    //   "paymentDate": "sample string 3",
+    //   "paymentNumber": "sample string 4",
+    //   "description": "sample string 5"
+    // }
+
+    let response_body_plain_test = "{\
+        \"paymentId\": \"sample string 1\",\
+        \"amount\": \"sample string 2\",\
+        \"paymentDate\": \"sample string 3\",\
+        \"paymentNumber\": \"sample string 4\",\
+        \"description\": \"sample string 5\"\
     }";
 
     // @dev - Returning the response as a string
