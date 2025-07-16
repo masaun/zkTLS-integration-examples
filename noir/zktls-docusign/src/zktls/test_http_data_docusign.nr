@@ -1,5 +1,5 @@
 /**
- * @notice - HTTP data, which have a long HTTP header, for testing purpose.
+ * @notice - HTTP data, which have a Docusign's REST API response, which returns only response "body" (Not return response "header") 
  * @dev - DocuSign API reference: https://developers.docusign.com/docs/esign-rest-api/reference/billing/payments/get/
  */
 
@@ -27,49 +27,6 @@ pub fn response() -> [u8; 211] {
     response_bytes
 }
 
-// //   72, 84, 84, 80, 47, 49, 46, 49, 32, 50, 48, 48, 32, 79, 75,
-// pub fn start_line() -> [Field; 15] {
-//     "HTTP/1.1 200 OK".as_bytes().map(|x| x as Field)
-// }
-
-// // [
-// //   99, 111, 110, 116, 101, 110, 116, 45, 116, 121, 112, 101, 58, 32, 97, 112,
-// //   112, 108, 105, 99, 97, 116, 105, 111, 110, 47, 106, 115, 111, 110, 59, 32, 99,
-// //   104, 97, 114, 115, 101, 116, 61, 117, 116, 102, 45, 56,
-// // ];
-// pub fn header_0() -> [Field; 45] {
-//     "content-type: application/json; charset=utf-8".as_bytes().map(|x| x as Field)
-// }
-
-// // [
-// //   99, 111, 110, 116, 101, 110, 116, 45, 101, 110, 99, 111, 100, 105, 110, 103,
-// //   58, 32, 103, 122, 105, 112,
-// // ];
-// pub fn header_1() -> [Field; 22] {
-//     "content-encoding: gzip".as_bytes().map(|x| x as Field)
-// }
-
-// // [
-// //   84, 114, 97, 110, 115, 102, 101, 114,  45, 69, 110, 99, 111, 100, 105, 110, 103,  58,  32,  99, 104, 117, 110, 107, 101, 100
-// // ]
-// pub fn header_2() -> [Field; 26] {
-//     "Transfer-Encoding: chunked".as_bytes().map(|x| x as Field)
-// }
-// //[
-// //    67, 111, 110, 110, 101,99, 116, 105, 111, 110, 58,  32,  99, 108, 111, 115, 101
-// // ]
-// pub fn header_3() -> [Field; 17] {
-//     "Connection: close".as_bytes().map(|x| x as Field)
-// }
-
-// // [
-// //   83, 111, 117, 114, 99, 101,
-// //   45,  65, 103, 101, 58,  32,
-// //   49,  53,  51
-// // ]
-// pub fn header_4() -> [Field; 15] {
-//     "Source-Age: 153".as_bytes().map(|x| x as Field)
-// }
 
 // {
 //   "paymentId": "sample string 1",
