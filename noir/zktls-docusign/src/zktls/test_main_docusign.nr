@@ -25,10 +25,10 @@ fn test_main_docusign() {
     // @dev - Noir Web Prover
     let nullifier = main(
                             response_vec,
-                            start_line_vec,
-                            header_0_vec,
-                            header_1_vec,
-                            header_2_vec,
+                            // start_line_vec,
+                            // header_0_vec,
+                            // header_1_vec,
+                            // header_2_vec,
                             body_vec,
                             secret
                         );
