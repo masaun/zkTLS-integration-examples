@@ -1,6 +1,6 @@
 use crate::{
-    MAX_RESPONSE_LENGTH, MAX_START_LINE_LENGTH, 
-    MAX_HEADER_0_LENGTH, MAX_HEADER_1_LENGTH, MAX_HEADER_2_LENGTH, 
+    MAX_RESPONSE_LENGTH, 
+    //MAX_START_LINE_LENGTH, MAX_HEADER_0_LENGTH, MAX_HEADER_1_LENGTH, MAX_HEADER_2_LENGTH, 
     MAX_BODY_LENGTH,
     zktls::{
         test_inputs::{polynomial_input, NUM_HEADERS}
@@ -18,10 +18,10 @@ use poseidon::poseidon::bn254::{hash_1, hash_2};
 
 fn verify_http_data(
     response_bytes: [u8; MAX_RESPONSE_LENGTH],
-    start_line_field: [Field; MAX_START_LINE_LENGTH],
-    header_0_field: [Field; MAX_HEADER_0_LENGTH],
-    header_1_field: [Field; MAX_HEADER_1_LENGTH],
-    header_2_field: [Field; MAX_HEADER_2_LENGTH],
+    // start_line_field: [Field; MAX_START_LINE_LENGTH],
+    // header_0_field: [Field; MAX_HEADER_0_LENGTH],
+    // header_1_field: [Field; MAX_HEADER_1_LENGTH],
+    // header_2_field: [Field; MAX_HEADER_2_LENGTH],
     body_field: [Field; MAX_BODY_LENGTH]
 ) {
     // @dev - Setup the line digests and polynomial input
@@ -29,18 +29,19 @@ fn verify_http_data(
     let polynomial_input: Field = polynomial_input(); // Polynomial input for zkTLS circuit
 
     // @dev - Create the polynominal digests of the test data of OKX DEX API
-    let start_line_digest = polynomial_digest(start_line_field, polynomial_input, 1);
-    let header_0_digest = polynomial_digest(header_0_field, polynomial_input, 1);
-    let header_1_digest = polynomial_digest(header_1_field, polynomial_input, 1);
-    let header_2_digest = polynomial_digest(header_2_field, polynomial_input, 1);
+    // let start_line_digest = polynomial_digest(start_line_field, polynomial_input, 1);
+    // let header_0_digest = polynomial_digest(header_0_field, polynomial_input, 1);
+    // let header_1_digest = polynomial_digest(header_1_field, polynomial_input, 1);
+    // let header_2_digest = polynomial_digest(header_2_field, polynomial_input, 1);
     //let body_digest = polynomial_digest(body, polynomial_input, 1);
     let body_digest = polynomial_digest(body_field, polynomial_input, 1);
 
     // @dev - Set the line digests for the test data of OKX DEX API
-    line_digests[0] = start_line_digest;
-    line_digests[1] = header_0_digest;
-    line_digests[2] = header_1_digest;
-    line_digests[3] = header_2_digest;
+    // line_digests[0] = start_line_digest;
+    // line_digests[1] = header_0_digest;
+    // line_digests[2] = header_1_digest;
+    // line_digests[3] = header_2_digest;
+    line_digests[0] = body_digest;
     //line_digests[5] = body_digest;    // @dev - [Experimentation]: Whether or not the circuit test can finish to run. 
 
     // @dev - Setup

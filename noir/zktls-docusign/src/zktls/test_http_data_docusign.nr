@@ -3,6 +3,14 @@
  * @dev - DocuSign API reference: https://developers.docusign.com/docs/esign-rest-api/reference/billing/payments/get/
  */
 
+use crate::tests::{
+    test_http_data_generator_for_docusign_response_header_and_body::{
+        response_plain_test,
+        response_body_plain_test
+    }
+};
+
+
 // Here is the full API response (of DocuSign)
 // NOTE: No API response "header". Only API response "body" is returned.
 
@@ -13,19 +21,10 @@
 //   "paymentNumber": "sample string 4",
 //   "description": "sample string 5"
 // }
-pub fn response() -> [u8; 178] {
-    [
-        72, 84, 84, 80, 47, 49, 46, 49, 32, 50, 48, 48, 32, 79, 75, 13, 10, 99, 111, 110, 116,
-        101, 110, 116, 45, 116, 121, 112, 101, 58, 32, 97, 112, 112, 108, 105, 99, 97, 116, 105,
-        111, 110, 47, 106, 115, 111, 110, 59, 32, 99, 104, 97, 114, 115, 101, 116, 61, 117, 116,
-        102, 45, 56, 13, 10, 99, 111, 110, 116, 101, 110, 116, 45, 101, 110, 99, 111, 100, 105,
-        110, 103, 58, 32, 103, 122, 105, 112, 13, 10, 84, 114, 97, 110, 115, 102, 101, 114, 45,
-        69, 110, 99, 111, 100, 105, 110, 103, 58, 32, 99, 104, 117, 110, 107, 101, 100, 13, 10,
-        67, 111, 110, 110, 101, 99, 116, 105, 111, 110, 58, 32, 99, 108, 111, 115, 101, 13, 10,
-        83, 111, 117, 114, 99, 101, 45, 65, 103, 101, 58, 32, 49, 53, 51, 13, 10, 13, 10, 123,
-        13, 10, 32, 32, 34, 104, 101, 108, 108, 111, 34, 58, 32, 34, 119, 111, 114, 108, 100,
-        34, 13, 10, 125,
-    ]
+pub fn response() -> [u8; 211] {
+    let response_plain_test = response_plain_test();
+    let response_bytes = response_plain_test.as_bytes().map(|x| x as u8);
+    response_bytes
 }
 
 // //   72, 84, 84, 80, 47, 49, 46, 49, 32, 50, 48, 48, 32, 79, 75,
@@ -79,9 +78,8 @@ pub fn response() -> [u8; 178] {
 //   "paymentNumber": "sample string 4",
 //   "description": "sample string 5"
 // }
-pub fn body() -> [u8; 24] {
-    [
-        123, 13, 10, 32, 32, 34, 104, 101, 108, 108, 111, 34, 58, 32, 34, 119, 111, 114, 108,
-        100, 34, 13, 10, 125,
-    ]
+pub fn body() -> [u8; 211] {
+    let response_body_plain_test = response_body_plain_test();
+    let response_body_bytes = response_body_plain_test.as_bytes().map(|x| x as u8);
+    response_body_bytes
 }
