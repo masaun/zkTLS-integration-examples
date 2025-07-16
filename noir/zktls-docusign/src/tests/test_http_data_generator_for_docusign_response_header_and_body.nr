@@ -32,29 +32,8 @@ fn generate_test_http_data_for_DEX_API_response_header_and_body() {
 /**
  * @notice - Example response body of the DEX API in a plain text format.
  */
-fn response_header_plain_test() -> str<1112> {
-    let response_header_plain_test = "{
-        \"date\": \"Thu, 10 Jul 2025 03:34:36 GMT\",
-        \"content-type\": \"application/json;charset=UTF-8\",
-        \"transfer-encoding\": \"chunked\",
-        \"connection\": \"keep-alive\",
-        \"vary\": \"Accept-Encoding\",
-        \"set-cookie\": [
-            \"locale=en-US; Max-Age=604800; Expires=Thu, 17-Jul-2025 03:34:36 GMT; Path=/\",
-            \"__cf_bm=nOLEpRAqS08Ck_p20ZOR_om74A_U6NdMzeXyPjuRDCY-1752118476-1.0.1.1-9GL3gnxhdlVxAsHLxGpZH9B3hJilGJOCwnX9gy_ct0BVvEggqwlwbRhTIpQWjL5tHp4JmnT6WdHuKEPrnCK7OeosGDWCH5TtEbG6h8i1rPU; path=/; expires=Thu, 10-Jul-25 04:04:36 GMT; domain=.okx.com; HttpOnly; Secure; SameSite=None\"
-        ],
-        \"b-locale\": \"en_US\",
-        \"content-security-policy\": \"frame-ancestors 'self'\",
-        \"access-control-allow-origin\": \"*\",
-        \"x-brokerid\": \"0\",
-        \"strict-transport-security\": \"max-age=31536000; includeSubDomains\",
-        \"x-xss-protection\": \"1; mode=block\",
-        \"x-frame-options\": \"DENY\",
-        \"x-content-type-options\": \"nosniff\",
-        \"cf-cache-status\": \"DYNAMIC\",
-        \"server\": \"cloudflare\",
-        \"cf-ray\": \"95cd019c3ad57822-NRT\"
-    }";
+fn response_header_plain_test() -> str<7> {
+    let response_header_plain_test = "Nothing"
     
     // @dev - Returning the API response header as a string
     response_header_plain_test
