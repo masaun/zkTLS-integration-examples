@@ -19,6 +19,16 @@ fn generate_test_http_data_for_docusign_response_header_and_body() {
 }
 
 
+
+/**
+ * @notice - Full response
+ */
+fn response_plain_test() -> str<211> {
+    let response_plain_test = response_body_plain_test();
+    //let response_bytes = response_header_plain_text.concat(response_body_plain_text);
+    response_plain_test
+}
+
 /**
  * @notice - Example response body of the DEX API in a plain text format.
  */
