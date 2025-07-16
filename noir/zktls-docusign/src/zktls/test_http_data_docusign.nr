@@ -1,5 +1,5 @@
 /**
- * @notice - HTTP data, which have a long HTTP header, for testing purpose.
+ * @notice - HTTP data, which have a Docusign's REST API response, which returns only response "body" (Not return response "header") 
  * @dev - DocuSign API reference: https://developers.docusign.com/docs/esign-rest-api/reference/billing/payments/get/
  */
 
