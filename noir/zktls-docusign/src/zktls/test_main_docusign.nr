@@ -1,7 +1,7 @@
 use crate::{
     main,
-    MAX_RESPONSE_LENGTH, MAX_START_LINE_LENGTH, 
-    MAX_HEADER_0_LENGTH, MAX_HEADER_1_LENGTH, MAX_HEADER_2_LENGTH, 
+    MAX_RESPONSE_LENGTH, 
+    //MAX_START_LINE_LENGTH, MAX_HEADER_0_LENGTH, MAX_HEADER_1_LENGTH, MAX_HEADER_2_LENGTH, 
     MAX_BODY_LENGTH,
     zktls::{
         test_inputs::{polynomial_input, polynomial_digest, NUM_HEADERS},
